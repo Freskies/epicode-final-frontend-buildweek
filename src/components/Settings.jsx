@@ -70,7 +70,7 @@ const Settings = () => {
     //console.log(myData)
     //console.log(data)
 
-    //const getProfileByName = (name) => {
+    const getProfileByName = (name) => {
         const profile = data.find(item => item.name === name); // Supponendo che la proprietà si chiami 'name'
         if (profile) {
             console.log(profile);
