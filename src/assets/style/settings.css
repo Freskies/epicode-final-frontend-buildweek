@@ -1,3 +1,7 @@
 #impostazioni {
     background-color: black;
 }
+
+#main {
+    display: flex;
+}
