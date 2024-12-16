@@ -1,0 +1,36 @@
+.header {
+	display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.header > img {
+	height: 8em;
+}
+
+.header > div > i {
+	margin: 1em;
+}
+
+.gruppoNav {
+	display: flex;
+}
+
+.icone {
+	margin: 1em;
+	text-align: center;
+}
+
+.icone > img {
+	border-radius: 100%;
+}
+
+.icone > i {
+	font-size: large;
+}
+
+#search {
+	padding: 0.5em;
+	background-color: #dfdfdfa1;
+	border: none;
+}
