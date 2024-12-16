@@ -38,16 +38,22 @@ const Sidebar = () => {
 					<a href="#">Visualizza il tuo profilo</a>
 					<hr className="divider" />
 					<h4 className="stat-label">
-						Trova lavoro più velocemente con Premium
+         
+						Trova lavoro più velocemente con <a>Premium</a> 
+            <i class="fa-solid fa-cloud-bolt"></i>
 					</h4>
 					<p>Prova per 0 EUR</p>
 					<hr />
-					<p>Elementi salvati</p>
+					<p className="paragraph" ><i class="fa-solid fa-bookmark"></i> Elementi salvati</p>
 				</div>
 
-				<div className="card">
-					<p>Gruppi</p>
-					<p>Eventi</p>
+				<div className="linkcard">
+          <div>
+					<a href="#">Gruppi</a>
+          </div>
+          <div>
+					<a href="#">Eventi</a>
+				</div>
 				</div>
 			</div>
 		</>
