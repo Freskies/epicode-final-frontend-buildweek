@@ -1,0 +1,98 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	color: black;
+}
+
+.font {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+/* questa è la sezione per postare  */
+.postDiv {
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+	padding: 10px;
+	background-color: white;
+	border: 1px solid grey;
+	text-align: start;
+	border-radius: 10px;
+	margin: auto;
+	margin-block: 4em;
+}
+
+.font > p {
+	margin-left: 4px;
+}
+.postTop {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.postTop > button {
+	border-radius: 20px;
+	border: 1px solid black;
+	width: 20rem;
+	padding: 1rem;
+	text-align: start;
+}
+
+.postTop > img {
+	width: 40px;
+	margin: 0px 10px 10px 0px;
+	border-radius: 50%;
+}
+
+.postBottom {
+	margin-top: 20px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+/* questo è la sezione della card */
+
+.cardMain {
+	width: 50%;
+	padding: 10px;
+	background-color: white;
+	border: 1px solid grey;
+	text-align: start;
+	border-radius: 10px;
+	margin: auto;
+	margin-top: 1em;
+}
+
+.cardMain > img {
+	width: 100%;
+	height: 30rem;
+}
+
+.cardTop {
+	display: flex;
+	flex-direction: row;
+}
+
+.cardTop > div > img {
+	width: 40px;
+	margin: 0px 10px 10px 0px;
+	border-radius: 50%;
+}
+
+hr {
+	margin: 10px 0px 15px 0px;
+}
+
+.cardBottom {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+i {
+	font-size: 15px;
+}
