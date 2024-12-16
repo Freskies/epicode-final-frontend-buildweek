@@ -1,5 +1,11 @@
 function App() {
-	return null;
+	return (
+		<>
+			<header></header>
+			<main>hell</main>
+			<footer></footer>
+		</>
+	);
 }
 
 export default App;
