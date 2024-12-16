@@ -1,22 +1,20 @@
 import Header from "./components/Header";
-import Aside_right from "./components/Asideright";
-import Maincard from "./components/mainCard";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Settings from "./components/Settings";
+import Home from "./components/Home";
 
 function App() {
 	return (
 		<>
-			<Header />
-			<main className="main">
-				<aside className="profile">
-					<figure className="card"></figure>
-				</aside>
-				<section className="post-section">
-					<Maincard />
-				</section>
-				<aside className="ads">
-					<Aside_right />
-				</aside>
-			</main>
+			<BrowserRouter>
+				<Header></Header>
+				<main>
+					<Routes>
+						<Route path="/Settings" element={<Settings />} />
+						<Route path="/Home" element={<Home />} />
+					</Routes>
+				</main>
+			</BrowserRouter>
 		</>
 	);
 }
