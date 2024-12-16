@@ -4,7 +4,11 @@
     align-items: center;
 }
 
-.header > img {
+.header p {
+    font-size: larger;
+}
+
+#logoWeb {
 	height: 8em;
 }
 
@@ -21,7 +25,12 @@
 	text-align: center;
 }
 
-.icone > img {
+a {
+    text-decoration: none;
+    color: black;
+}
+
+#fotoProfilo {
 	border-radius: 100%;
 }
 
@@ -34,3 +43,9 @@
 	background-color: #dfdfdfa1;
 	border: none;
 }
+
+.profilo {
+    display: flex;
+    justify-content: space-around;
+}
+
