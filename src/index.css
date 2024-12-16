@@ -1,5 +1,10 @@
 :root {
+	/* COLORS */
 	--text-color: #000;
+	/* LAYOUT */
+	--navbar-height: 8rem;
+	--aside-width: 30rem;
+	--border-radius: 15px;
 }
 
 /*******************************/
@@ -18,8 +23,39 @@ html {
 
 body {
 	color: var(--text-color);
+	min-height: 100vh;
 }
 
 /*******************************/
-/* PLACEHOLDER */
+/* LAYOUT */
 /*******************************/
+
+.header {
+	height: var(--navbar-height);
+}
+
+.main {
+	display: grid;
+	grid-area: "profile post ads";
+	grid-template-columns: var(--aside-width) 1fr var(--aside-width);
+	min-height: calc(100vh - var(--navbar-height));
+}
+
+.profile {
+	grid-area: "profile";
+	background-color: aqua;
+}
+
+.post-section {
+	grid-area: "post";
+	background-color: orangered;
+}
+
+.ads {
+	grid-area: "ads";
+	background-color: blueviolet;
+}
+
+.post {
+	font-size: 3.2rem;
+}
