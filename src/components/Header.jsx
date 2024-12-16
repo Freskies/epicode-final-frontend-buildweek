@@ -1,6 +1,7 @@
 import React from 'react'
 import '../assets/style/Navbar.css';
 import { Link } from 'react-router-dom';
+import profilepic from "../assets/pics/profilepic.jpeg";
 
 function Header() {
     return (
@@ -28,7 +29,7 @@ function Header() {
 
                     <Link to="/Settings">
 
-                    	<img src="https://placedog.net/25" alt="foto profilo" id='fotoProfilo'/>
+                    	<img src={profilepic} alt="foto profilo" id='fotoProfilo'/>
 					
                         <div className='profilo'>
                             <p>Tu</p>

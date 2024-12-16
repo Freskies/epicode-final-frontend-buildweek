@@ -2,6 +2,7 @@ import React from "react";
 import "./sidebar.css"; // Importa il file CSS
 import profilepic from "../assets/pics/profilepic.jpeg";
 import cover from "../assets/pics/cover.jpg";
+import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
 	return (
@@ -35,7 +36,9 @@ const Sidebar = () => {
 
 				{/* Link al profilo */}
 				<div className="profile-link">
-					<a href="#">Visualizza il tuo profilo</a>
+					<Link to="Settings">
+						Visualizza il tuo profilo
+					</Link>
 					<hr className="divider" />
 					<h4 className="stat-label">
          
