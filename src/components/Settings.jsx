@@ -69,21 +69,7 @@ const Settings = () => {
 
     //console.log(myData)
     //console.log(data)
-
-    const getProfileByName = (name) => {
-        const profile = data.find(item => item.name === name); // Supponendo che la proprietà si chiami 'name'
-        if (profile) {
-            console.log(profile);
-        } else {
-            console.log(`Nessun profilo trovato con il nome: ${name}`);
-        }
-    };
     
-    // Esempio di utilizzo dopo aver caricato i dati
-    getProfiles().then(() => {
-        getProfileByName('Luca'); // Sostituisci 'NomeDaCercare' con il nome effettivo che vuoi cercare
-    });
-
     return (
         <div>
             <div id="impostazioni">
