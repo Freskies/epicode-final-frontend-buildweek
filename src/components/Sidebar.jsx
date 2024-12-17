@@ -1,19 +1,16 @@
-import React from "react";
-import "./sidebar.css"; // Importa il file CSS
+import "./sidebar.css";
 import profilepic from "../assets/pics/profilepic.jpeg";
 import cover from "../assets/pics/cover.jpg";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
 	return (
 		<>
 			{/* Immagine di copertina */}
 
-			<div className="profilecard">
+			<figure className="profilecard">
 				<img className="cover" src={cover} alt="cover" />
-				{/* Foto del profilo */}
-
-				<img className="picprofile" src={profilepic} alt="Profile" />
+				<img className="pic-profile" src={profilepic} alt="Profile" />
 
 				{/* Informazioni utente */}
 				<div className="user-info">
@@ -36,29 +33,28 @@ const Sidebar = () => {
 
 				{/* Link al profilo */}
 				<div className="profile-link">
-					<Link to="Settings">
-						Visualizza il tuo profilo
-					</Link>
+					<Link to="Settings">Visualizza il tuo profilo</Link>
 					<hr className="divider" />
 					<h4 className="stat-label">
-         
-						Trova lavoro più velocemente con <a>Premium</a> 
-            <i class="fa-solid fa-cloud-bolt"></i>
+						Trova lavoro più velocemente con <a>Premium</a>
+						<i className="fa-solid fa-cloud-bolt"></i>
 					</h4>
 					<p>Prova per 0 EUR</p>
 					<hr />
-					<p className="paragraph" ><i class="fa-solid fa-bookmark"></i> Elementi salvati</p>
+					<p className="paragraph">
+						<i className="fa-solid fa-bookmark"></i> Elementi salvati
+					</p>
 				</div>
 
 				<div className="linkcard">
-          <div>
-					<a href="#">Gruppi</a>
-          </div>
-          <div>
-					<a href="#">Eventi</a>
+					<div>
+						<a href="#">Gruppi</a>
+					</div>
+					<div>
+						<a href="#">Eventi</a>
+					</div>
 				</div>
-				</div>
-			</div>
+			</figure>
 		</>
 	);
 };
