@@ -1,0 +1,10 @@
+.main-navbar i {
+    font-size: 3rem;
+}
+.main-navbar {
+    background-color: white;
+    height: 7.5rem;
+}
+.nav-r {
+    border: solid 2px grey;
+}
