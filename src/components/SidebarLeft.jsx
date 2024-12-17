@@ -11,7 +11,7 @@ const SidebarLeft = () => {
 
 				<div className="user-info">
 					<h2 className="user-name">Truman Burbank</h2>
-					<p className="user-title">Insurer Operator | Seaheaven, USA</p>
+					<p className="user-title">Insure Manager | Seaheaven, USA</p>
 					{/* TODO BORDER-BOTTOM */}
 				</div>
 
@@ -39,7 +39,7 @@ const SidebarLeft = () => {
 			</figure>
 			<figure className="aside-left-card aside-left-card--events">
 				<div className="linkcard">
-					<div>
+					<div className="gruppieventi">
 						<a href="#">Gruppi</a>
 					</div>
 					<div>

@@ -38,6 +38,7 @@ body {
 	color: var(--text-color);
 	min-height: 100vh;
 	font-size: 1.6rem;
+	background-color: beige;
 }
 
 ul,
@@ -226,6 +227,7 @@ a:visited {
 }
 .profile-link {
 	margin-left: 1rem;
+	margin-bottom: 1rem;
 }
 .scopri {
 	text-align: center;
@@ -235,9 +237,7 @@ a:visited {
 .linkcard {
 	margin-left: 1rem;
 	margin-top: 1rem;
-	
 }
-
 
 .profile-link a {
 	color: #0073b1;

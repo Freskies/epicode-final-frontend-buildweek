@@ -30,6 +30,32 @@ function MainNavbar() {
 					</Link>
 				</li>
 				<li>
+					<Link to="/Home" className="navbar-link to-home">
+						<i class="fa-solid fa-people-arrows main-nav-icon"></i>
+						<p>Rete</p>
+					</Link>
+				</li>
+				<li>
+					<Link to="/Home" className="navbar-link to-home">
+						<i class="fa-solid fa-briefcase main-nav-icon "></i>
+						<p>Lavoro</p>
+					</Link>
+				</li>
+
+				<li>
+					<Link to="/Home" className="navbar-link to-home">
+						<i class="fa-solid fa-comment-dots main-nav-icon"></i>
+						<p>Messaggistica</p>
+					</Link>
+				</li>
+
+				<li>
+					<Link to="/Home" className="navbar-link to-home">
+						<i class="fa-solid fa-bell main-nav-icon"></i>
+						<p>Notifiche</p>
+					</Link>
+				</li>
+				<li>
 					<Link to="/Settings" className="navbar-link to-settings">
 						<img
 							src={profilepic}
@@ -44,6 +70,19 @@ function MainNavbar() {
 					</Link>
 				</li>
 			</ul>
+			<div className="nav-r">
+				<ul>
+					<li>
+						<Link to="/Settings" className="navbar-link to-settings">
+							<i class="fa-solid fa-bell main-nav-icon"></i>
+							<div className="profile-dropdown-wrapper">
+								<p>Per le aziende </p>
+								<i className="fas fa-sort-down"></i>
+							</div>
+						</Link>
+					</li>
+				</ul>
+			</div>
 		</nav>
 	);
 }
