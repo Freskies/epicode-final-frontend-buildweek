@@ -1,4 +1,3 @@
-import "../assets/style/Aside.right.css";
 import square_png from "../assets/square.svg";
 import square_png2 from "../assets/square2.svg";
 import women_png from "../assets/women.png";
