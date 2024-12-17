@@ -1,4 +1,3 @@
-import "./sidebar.css";
 import profilepic from "../assets/pics/profilepic.jpeg";
 import cover from "../assets/pics/cover.jpg";
 import { Link } from "react-router-dom";

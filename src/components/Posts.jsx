@@ -1,6 +1,4 @@
-import "../assets/style/mainCard.css";
 import { useState, useEffect } from "react";
-
 import { STRIVE_STUDENT_API_KEY } from "./../api_key";
 import Post from "./Post";
 

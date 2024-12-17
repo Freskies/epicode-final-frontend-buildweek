@@ -1,6 +1,7 @@
 import SidebarLeft from "./SidebarLeft";
 import NewPostForm from "./NewPostForm";
 import Posts from "./Posts";
+import SidebarRight from "./SidebarRight";
 
 const Home = () => {
 	return (
@@ -10,7 +11,7 @@ const Home = () => {
 				<NewPostForm />
 				<Posts />
 			</section>
-			<aside className="ads">aside right</aside>
+			<SidebarRight />
 		</div>
 	);
 };

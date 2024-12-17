@@ -3,20 +3,21 @@ import emptyIcon from "../assets/empi.jpeg";
 function NewPostForm() {
 	return (
 		<form className="new-post-form">
-			<header className="postTop">
-				<img src={emptyIcon} alt="" />
-				<button>Crea un Post </button>
+			<header className="new-post-header">
+				{/* TODO profile image */}
+				<img className="new-post-profile-image" src={emptyIcon} alt="" />
+				<button className="btn-create-post">Crea un Post</button>
 			</header>
-			<div className="postBottom">
-				<div className="font">
+			<div className="new-post-actions-container">
+				<div className="action-wrapper">
 					<i className="fa-solid fa-image"> </i>
 					<p>Contenuti Multimediali</p>
 				</div>
-				<div className="font">
+				<div className="action-wrapper">
 					<i className="fa-solid fa-calendar-days"> </i>
 					<p>Eventi</p>
 				</div>
-				<div className="font">
+				<div className="action-wrapper">
 					<i className="fa-solid fa-newspaper"> </i>
 					<p>Scrivi un articolo</p>
 				</div>

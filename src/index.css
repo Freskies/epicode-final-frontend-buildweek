@@ -8,6 +8,8 @@
 	--navbar-height: 10rem;
 	--aside-width: 32rem;
 	--border-radius: 15px;
+	--border-radius-large: 30px;
+	--margin-beetween: 1.6rem;
 	/* NAVBAR */
 	--profile-photo-width: 4rem;
 	--linkedin-logo-height: 8rem;
@@ -89,6 +91,15 @@ a:visited {
 	align-items: center;
 	gap: 1.6rem;
 	margin-top: 2.4rem;
+	width: 100%;
+}
+
+/* TODO fix white space */
+
+.profile > *,
+.post-section > *,
+.ads > * {
+	width: calc(100% - (var(--margin-beetween) * 2));
 }
 
 /*******************************/
@@ -163,7 +174,6 @@ a:visited {
 .aside-left-card {
 	display: flex;
 	flex-direction: column;
-	width: 90%;
 	border-radius: var(--border-radius);
 	background-color: #fff;
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -224,17 +234,17 @@ a:visited {
 /* MAIN */
 /*******************************/
 
-/*******************************/
-/* MAIN > NEW POST */
-/*******************************/
-
 .new-post-form {
 	margin-bottom: 2.4rem;
 }
 
-/*******************************/
-/* MAIN > POSTS */
-/*******************************/
+.btn-create-post {
+	border-radius: var(--border-radius-large);
+	border: 1px solid black;
+	width: 20rem;
+	padding: 1rem;
+	text-align: start;
+}
 
 .posts {
 	display: flex;
@@ -247,19 +257,24 @@ a:visited {
 .new-post-form {
 	display: flex;
 	flex-direction: column;
-	width: 90%;
 	padding: 1.6rem;
 	background-color: #fff;
 	border: 1px solid #777;
 	border-radius: var(--border-radius);
 }
 
-.post-header {
+.post {
+	width: 100%;
+}
+
+.post-header,
+.new-post-header {
 	display: flex;
 	flex-direction: row;
 }
 
-.post-profile-image {
+.post-profile-image,
+.new-post-profile-image {
 	width: 4rem;
 	height: 4rem;
 	border-radius: 50%;
@@ -271,7 +286,8 @@ a:visited {
 	height: 30rem;
 }
 
-.post-footer {
+.post-footer,
+.new-post-actions-container {
 	display: flex;
 	justify-content: space-around;
 }
@@ -289,3 +305,47 @@ a:visited {
 /*******************************/
 /* ASIDE RIGHT */
 /*******************************/
+
+.ads-card--1 {
+	padding: 1rem;
+	background-color: #fff;
+	border: 1px solid grey;
+	display: flex;
+	flex-direction: column;
+	border-radius: var(--border-radius);
+}
+
+.ads-card > h2 {
+	font-size: 2.4rem;
+}
+
+.ads-card small {
+	color: #777;
+	font-size: 1.5rem;
+}
+
+.game-container {
+	margin-top: 1rem;
+	display: grid;
+	grid-template-columns: auto 1fr auto;
+	align-items: center;
+	gap: 1rem;
+}
+
+.ads-image {
+	width: 100%;
+	border: 1px solid grey;
+	border-radius: var(--border-radius);
+}
+
+.footer {
+	text-align: center;
+	font-size: 1.2rem;
+	margin-top: 1rem;
+}
+
+.footer-links {
+	display: flex;
+	flex-direction: column;
+	gap: 0.2rem;
+}
