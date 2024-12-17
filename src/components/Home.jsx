@@ -1,13 +1,17 @@
-import Sidebar from "./Sidebar";
+import SidebarLeft from "./SidebarLeft";
+import NewPostForm from "./NewPostForm";
+import Posts from "./Posts";
+import SidebarRight from "./SidebarRight";
 
 const Home = () => {
 	return (
 		<div className="main">
-			<aside className="profile">
-				<Sidebar />
-			</aside>
-			<section className="post-section"></section>
-			<aside className="ads">aside right</aside>
+			<SidebarLeft />
+			<section className="post-section">
+				<NewPostForm />
+				<Posts />
+			</section>
+			<SidebarRight />
 		</div>
 	);
 };
