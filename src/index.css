@@ -224,6 +224,20 @@ a:visited {
 .stats > p:nth-child(even) {
 	font-weight: 600;
 }
+.profile-link {
+	margin-left: 1rem;
+}
+.scopri {
+	text-align: center;
+	margin-bottom: 2rem;
+	margin-top: 1rem;
+}
+.linkcard {
+	margin-left: 1rem;
+	margin-top: 1rem;
+	
+}
+
 
 .profile-link a {
 	color: #0073b1;
