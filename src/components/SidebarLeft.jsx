@@ -10,29 +10,30 @@ const SidebarLeft = () => {
 				<img className="pic-profile" src={profilepic} alt="Profile" />
 
 				<div className="user-info">
-					<h2 className="user-name">Mario Rossi</h2>
-					<p className="user-title">Software Developer | Milano, Italia</p>
+					<h2 className="user-name">Truman Burbank</h2>
+					<p className="user-title">Insurer Operator | Seaheaven, USA</p>
 					{/* TODO BORDER-BOTTOM */}
 				</div>
 
 				<div className="stats">
 					<p>Collegamento</p>
 					<p>123</p>
-					<p>Connessioni</p>
+					<h3>Espandi la tua rete </h3>
 					<p>500+</p>
 				</div>
 
 				<div className="profile-link">
-					<Link to="Settings">Visualizza il tuo profilo</Link>
+					
 					{/* TODO with box shadow or border */}
 					<h4 className="stat-label">
-						Trova lavoro più velocemente con <a>Premium</a>
-						<i className="fa-solid fa-cloud-bolt"></i>
+						Trova lavoro più velocemente con <a href="#">Premium</a>
+						<i className="fa-solid fa-star"></i>
 					</h4>
 					<p>Prova per 0 EUR</p>
 					{/* TODO with box shadow or border */}
 					<p className="paragraph">
-						<i className="fa-solid fa-bookmark"></i> Elementi salvati
+						<i className="fa-solid fa-bookmark"></i>
+						<a href="#"> Elementi salvati </a>
 					</p>
 				</div>
 			</figure>
@@ -44,6 +45,7 @@ const SidebarLeft = () => {
 					<div>
 						<a href="#">Eventi</a>
 					</div>
+					<h3 className="scopri"> Scopri di più </h3>
 				</div>
 			</figure>
 		</aside>
