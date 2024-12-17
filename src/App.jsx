@@ -11,7 +11,7 @@ function App() {
 				<main>
 					<Routes>
 						<Route path="/Settings" element={<Settings />} />
-						<Route path="/Home" element={<Home />} />
+						<Route path="/" element={<Home />} />
 					</Routes>
 				</main>
 			</BrowserRouter>
