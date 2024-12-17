@@ -1,5 +1,6 @@
 import "../assets/style/Navbar.css";
 import { Link } from "react-router-dom";
+import profilepic from "./../assets/pics/profilepic.jpeg";
 
 function Header() {
 	return (
@@ -17,29 +18,23 @@ function Header() {
 				<input type="text" placeholder="Cerca compagni" id="search" />
 			</div>
 
-			<div className="gruppoNav">
-				<Link to="/home">
-					<article className="icone">
-						<i className="fas fa-home"></i>
-						<p>Home</p>
-					</article>
-				</Link>
-
+			<Link to="/">
 				<article className="icone">
-					<Link to="/Settings">
-						<img
-							src="https://placedog.net/25"
-							alt="foto profilo"
-							id="fotoProfilo"
-						/>
-
-						<div className="profilo">
-							<p>Tu</p>
-							<i className="fas fa-sort-down"></i>
-						</div>
-					</Link>
+					<i className="fas fa-home"></i>
+					<p>Home</p>
 				</article>
-			</div>
+			</Link>
+
+			<article className="icone">
+				<Link to="/Settings">
+					<img src={profilepic} alt="foto profilo" id="fotoProfilo" />
+
+					<div className="profilo">
+						<p>Tu</p>
+						<i className="fas fa-sort-down"></i>
+					</div>
+				</Link>
+			</article>
 		</header>
 	);
 }
