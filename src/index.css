@@ -24,6 +24,7 @@ html {
 body {
 	color: var(--text-color);
 	min-height: 100vh;
+	font-size: 1.6rem;
 }
 
 /*******************************/
@@ -54,8 +55,4 @@ body {
 .ads {
 	grid-area: "ads";
 	background-color: blueviolet;
-}
-
-.post {
-	font-size: 3.2rem;
 }

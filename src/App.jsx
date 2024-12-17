@@ -10,8 +10,8 @@ function App() {
 				<Header></Header>
 				<main>
 					<Routes>
-						<Route path="/Settings" element={<Settings />} />
 						<Route path="/Home" element={<Home />} />
+						<Route path="/Settings" element={<Settings />} />
 					</Routes>
 				</main>
 			</BrowserRouter>
