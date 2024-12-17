@@ -1,10 +1,14 @@
 :root {
 	/* COLORS */
 	--text-color: #000;
+	--search-bar-color: #dfdfdfa1;
 	/* LAYOUT */
-	--navbar-height: 8rem;
+	--navbar-height: 10rem;
 	--aside-width: 30rem;
 	--border-radius: 15px;
+	/* MAUSERES */
+	--profile-photo-width: 4rem;
+	--linkedin-logo-height: 8rem;
 }
 
 /*******************************/
@@ -24,13 +28,27 @@ html {
 body {
 	color: var(--text-color);
 	min-height: 100vh;
+	font-size: 1.6rem;
+}
+
+ul,
+li {
+	all: unset;
+}
+
+a:link,
+a:hover,
+a:active,
+a:visited {
+	text-decoration: none;
+	color: inherit;
 }
 
 /*******************************/
 /* LAYOUT */
 /*******************************/
 
-.header {
+.main-navbar {
 	height: var(--navbar-height);
 }
 
@@ -56,6 +74,67 @@ body {
 	background-color: blueviolet;
 }
 
-.post {
-	font-size: 3.2rem;
+/*******************************/
+/* MAIN NAVBAR */
+/*******************************/
+
+.main-navbar {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.linkedin-logo {
+	height: var(--linkedin-logo-height);
+}
+
+.logo-search-wrapper {
+	display: flex;
+	align-items: center;
+	gap: 1.2rem;
+}
+
+/* TODO search bar */
+
+.search-wrapper {
+	position: relative;
+}
+
+.search-wrapper.fa-search {
+	position: absolute;
+}
+
+.search-input {
+	border: none;
+}
+
+.navbar-links {
+	display: flex;
+	align-items: center;
+	gap: 1.2rem;
+	text-align: center;
+}
+
+.navbar-link {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.main-nav-icon {
+	height: var(--profile-photo-width);
+	width: var(--profile-photo-width);
+}
+
+/* TODO center icon */
+
+.profile-photo {
+	border-radius: 50%;
+	height: var(--profile-photo-width);
+	width: var(--profile-photo-width);
+}
+
+.profile-dropdown-wrapper {
+	display: flex;
+	gap: 0.4rem;
 }
