@@ -49,7 +49,7 @@ const Aside_right = () => {
 					<p>Centro assistenza</p>
 					<p>Opzione per gli annunci pubblicitari</p>
 					<p>Pubblicità Servizi alle azienda </p>
-					<p>Scarica l'app Linkedin Altro</p>
+					<p>Scarica l&apos;app Linkedin Altro</p>
 
 					<img src={linkedin_png} alt="linkedin logo" className="" />
 					<p>linkedin corporation &copy; 2024</p>
