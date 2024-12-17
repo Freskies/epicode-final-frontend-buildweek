@@ -8,6 +8,7 @@
 	--border-radius: 15px;
 	/* MAUSERES */
 	--profile-photo-width: 4rem;
+	--linkedin-logo-height: 8rem;
 }
 
 /*******************************/
@@ -84,7 +85,7 @@ a:visited {
 }
 
 .linkedin-logo {
-	height: 8rem;
+	height: var(--linkedin-logo-height);
 }
 
 .logo-search-wrapper {
