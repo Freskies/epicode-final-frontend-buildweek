@@ -13,8 +13,8 @@ const SidebarLeft = () => {
 					<h2 className="user-name">Truman Burbank</h2>
 					<p className="user-title">Insure Manager | Seaheaven, USA</p>
 					{/* TODO BORDER-BOTTOM */}
+				<hr />
 				</div>
-
 				<div className="stats">
 					<p>Collegamento</p>
 					<p>123</p>
@@ -23,7 +23,6 @@ const SidebarLeft = () => {
 				</div>
 
 				<div className="profile-link">
-					
 					{/* TODO with box shadow or border */}
 					<h4 className="stat-label">
 						Trova lavoro più velocemente con <a href="#">Premium</a>
