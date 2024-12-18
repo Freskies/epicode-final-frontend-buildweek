@@ -68,6 +68,7 @@ a:visited {
 }
 
 .main {
+	margin-top: var(--navbar-height);
 	display: grid;
 	place-content: center;
 	grid-template-columns: var(--aside-width) var(--main-width) var(--aside-width);
@@ -131,8 +132,12 @@ a:visited {
 
 .main-navbar {
 	display: flex;
-	justify-content: space-around;
+	justify-content: center;
 	align-items: center;
+	position: fixed;
+	width: 100%;
+	top: 0;
+	z-index: 1000;
 
 	i {
 		font-size: 3rem;
@@ -152,6 +157,7 @@ a:visited {
 	display: flex;
 	align-items: center;
 	gap: 1.2rem;
+	width: 50rem;
 }
 
 .search-wrapper {
@@ -184,11 +190,15 @@ a:visited {
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
-	gap: 7.8rem;
+	gap: 1.4rem;
 	text-align: center;
 	margin-top: 3px;
 	font-size: 1.3rem;
 	/* font-weight: 200; */
+
+	& > li {
+		width: 8.4rem;
+	}
 }
 
 .navbar-link {
@@ -213,6 +223,10 @@ a:visited {
 	display: flex;
 	align-items: center;
 	gap: 0.4rem;
+}
+
+.navbar-companies {
+	margin-left: 8rem;
 }
 
 /*******************************/
