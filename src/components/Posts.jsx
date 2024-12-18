@@ -42,7 +42,7 @@ const Posts = () => {
 	return (
 		<section className="posts">
 			{posts.length > 0 &&
-				posts.slice(34, 79).map(post => <Post key={post._id} post={post} />)}
+				posts.slice(0, 79).map(post => <Post key={post._id} post={post} />)}
 		</section>
 	);
 };
