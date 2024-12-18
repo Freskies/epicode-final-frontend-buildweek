@@ -13,11 +13,11 @@ function MainNavbar() {
 					/>
 				</Link>
 				<div className="search-wrapper">
-					<i className="fas fa-search"></i>
+					<i className="fas fa-search" id="lent" ></i>
 					<input
 						className="search-input"
 						type="search"
-						placeholder="Cerca compagni"
+						placeholder ="Cerca compagni"
 					/>
 				</div>
 			</div>
@@ -65,7 +65,7 @@ function MainNavbar() {
 
 						<div className="profile-dropdown-wrapper">
 							<p>Tu</p>
-							<i className="fas fa-sort-down"></i>
+							<i className="fas fa-sort-down" id="dropdown" ></i>
 						</div>
 					</Link>
 				</li>
@@ -74,7 +74,7 @@ function MainNavbar() {
 				<ul>
 					<li>
 						<Link to="/Settings" className="navbar-link to-settings">
-							<i class="fa-solid fa-bell main-nav-icon"></i>
+						<i class="fa-solid fa-grip"></i>
 							<div className="profile-dropdown-wrapper">
 								<p>Per le aziende </p>
 								<i className="fas fa-sort-down"></i>
