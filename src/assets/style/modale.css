@@ -46,8 +46,30 @@
 
 .placeholder-modale {
 	width: 100%;
-	border: none;
+	min-height: 120px;
+	padding: 12px;
+	font-size: 16px;
+	line-height: 1.5;
+	color: #333;
+	background-color: #f9f9f9;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+	resize: vertical;
+	outline: none;
+	transition: border-color 0.3s, box-shadow 0.3s;
 }
+
+.placeholder-modale:focus {
+	box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+	background-color: #fff;
+}
+
+.placeholder-modale::placeholder {
+	color: #aaa;
+	font-style: italic;
+}
+
 .modal-buttons {
 	position: absolute;
 	top: 0;
@@ -60,4 +82,16 @@
 	bottom: 0;
 	right: 0;
 	padding: 20px;
+}
+
+.identity-modale {
+	display: flex;
+	flex-direction: row;
+	justify-content: left;
+	padding: 10px;
+}
+
+.modale-name {
+	display: flex;
+	flex-direction: column;
 }

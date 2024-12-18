@@ -1,7 +1,25 @@
 import "../assets/style/modale.css";
 import { useState } from "react";
+import { setProfile } from "./../redux/action/profile";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect, useCallback } from "react";
+import { fetchProfileIfNotExist } from "./../fetchFunctions";
 
 function Modal({ onClose, onPostSubmit }) {
+	const {
+		_id: profileId,
+		name: firstName,
+		surname: lastName,
+		email,
+		image: profileImage,
+	} = useSelector(({ profile }) => profile);
+
+	const dispatch = useDispatch();
+	const setterProfile = useCallback(
+		profile => dispatch(setProfile(profile)),
+		[dispatch],
+	);
+
 	const [form, setForm] = useState({
 		text: "",
 	});
@@ -45,17 +63,31 @@ function Modal({ onClose, onPostSubmit }) {
 			setLoading(false);
 		}
 	};
+	useEffect(() => {
+		fetchProfileIfNotExist(profileId, setterProfile);
+	}, [profileId, setterProfile]);
 
 	return (
 		<div className="modal-position">
 			<div className="modal-bg">
-				<h2>Nuovo Post</h2>
+				<div className="identity-modale">
+					<img
+						src={profileImage}
+						alt="profile-img"
+						className="new-post-profile-image"
+					/>
+					<div className="modale-name">
+						<h2>
+							{firstName}
+							{lastName}
+						</h2>
+					</div>
+				</div>
 
 				<form onSubmit={handleSubmit}>
-					<input
+					<textarea
 						id="post"
-						type="text"
-						placeholder="Scrivi qualcosa"
+						placeholder="Scrivi qualcosa di interessante...."
 						className="placeholder-modale"
 						value={form.text}
 						onChange={e => {
