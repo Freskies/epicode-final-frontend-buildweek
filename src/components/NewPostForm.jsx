@@ -31,15 +31,22 @@ function NewPostForm() {
 			<div className="new-post-actions-container">
 				<div className="action-wrapper">
 					<i className="fa-solid fa-image" data-btn="multimedia-contents"></i>
-					<p>Contenuti Multimediali</p>
+					<a href="#">
+						<p>Contenuti Multimediali</p>
+					</a>
 				</div>
 				<div className="action-wrapper">
 					<i className="fa-solid fa-calendar-days" data-btn="events"></i>
-					<p>Eventi</p>
+					<a href="#">
+						<p>Eventi</p>{" "}
+					</a>
 				</div>
 				<div className="action-wrapper">
 					<i className="fa-solid fa-newspaper" data-btn="write-article"></i>
-					<p>Scrivi un articolo</p>
+					<a href="#">
+						{" "}
+						<p>Scrivi un articolo</p>{" "}
+					</a>
 				</div>
 
 				{isModalOpen && (

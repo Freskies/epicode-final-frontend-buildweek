@@ -44,3 +44,6 @@
 .profilepic {
     object-fit: cover;
 }
+.center {
+    margin-top: -12px;
+}

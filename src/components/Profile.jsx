@@ -45,7 +45,9 @@ const Settings = () => {
 						</p>
 						<p className="profile-info__email">{email}</p>
 					</figcaption>
+					<div className="exps">
                 <Experiences/>
+				</div>
 				</figure>
 			</section>
 			<aside className="other-profiles"></aside>
