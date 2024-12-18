@@ -56,7 +56,7 @@ function MainNavbar() {
 					</Link>
 				</li>
 				<li>
-					<Link to="/Settings" className="navbar-link to-settings">
+					<Link to="/Profile" className="navbar-link to-settings">
 						<img
 							src={profilepic}
 							alt="foto profilo"
@@ -73,7 +73,7 @@ function MainNavbar() {
 			<div className="navbar-companies">
 				<ul>
 					<li>
-						<Link to="/Settings" className="navbar-link to-settings">
+						<Link to="/Profile" className="navbar-link to-settings">
 							<i className="fa-solid fa-grip"></i>
 							<div className="profile-dropdown-wrapper">
 								<p>Per le aziende </p>

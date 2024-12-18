@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
-import Settings from "./components/Settings";
+import Profile from "./components/Profile";
 import Home from "./components/Home";
 import MainNavbar from "./components/MainNavbar";
 
@@ -14,7 +14,7 @@ function App() {
 					<Routes>
 						<Route path="/" element={<Navigate to="/Home" />} />
 						<Route path="/Home" element={<Home />} />
-						<Route path="/Settings" element={<Settings />} />
+						<Route path="/Profile" element={<Profile />} />
 					</Routes>
 				</main>
 			</BrowserRouter>
