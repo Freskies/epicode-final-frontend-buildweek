@@ -31,27 +31,27 @@ function MainNavbar() {
 				</li>
 				<li>
 					<Link to="/Home" className="navbar-link to-home">
-						<i class="fa-solid fa-people-arrows main-nav-icon"></i>
+						<i className="fa-solid fa-people-arrows main-nav-icon"></i>
 						<p>Rete</p>
 					</Link>
 				</li>
 				<li>
 					<Link to="/Home" className="navbar-link to-home">
-						<i class="fa-solid fa-briefcase main-nav-icon "></i>
+						<i className="fa-solid fa-briefcase main-nav-icon "></i>
 						<p>Lavoro</p>
 					</Link>
 				</li>
 
 				<li>
 					<Link to="/Home" className="navbar-link to-home">
-						<i class="fa-solid fa-comment-dots main-nav-icon"></i>
-						<p>Chat</p>
+						<i className="fa-solid fa-comment-dots main-nav-icon"></i>
+						<p>Messaggistica</p>
 					</Link>
 				</li>
 
 				<li>
 					<Link to="/Home" className="navbar-link to-home">
-						<i class="fa-solid fa-bell main-nav-icon"></i>
+						<i className="fa-solid fa-bell main-nav-icon"></i>
 						<p>Notifiche</p>
 					</Link>
 				</li>
@@ -70,11 +70,11 @@ function MainNavbar() {
 					</Link>
 				</li>
 			</ul>
-			<div className="nav-r">
+			<div className="navbar-companies">
 				<ul>
 					<li>
 						<Link to="/Settings" className="navbar-link to-settings">
-							<i class="fa-solid fa-bell main-nav-icon"></i>
+							<i className="fa-solid fa-grip"></i>
 							<div className="profile-dropdown-wrapper">
 								<p>Per le aziende </p>
 								<i className="fas fa-sort-down"></i>
