@@ -17,7 +17,6 @@ function Modal({ onClose, onPostSubmit }) {
 		setError(null);
 
 		try {
-			// Esegui la richiesta POST
 			const response = await fetch(
 				`https://striveschool-api.herokuapp.com/api/posts/`,
 				{
@@ -35,7 +34,6 @@ function Modal({ onClose, onPostSubmit }) {
 			}
 
 			const data = await response.json();
-			console.log("Post inviato:", data);
 
 			onPostSubmit(data);
 
@@ -52,7 +50,8 @@ function Modal({ onClose, onPostSubmit }) {
 		<div className="modal-position">
 			<div className="modal-bg">
 				<h2>Nuovo Post</h2>
-				<div onSubmit={handleSubmit}>
+
+				<form onSubmit={handleSubmit}>
 					<input
 						id="post"
 						type="text"
@@ -64,25 +63,27 @@ function Modal({ onClose, onPostSubmit }) {
 							setForm({ ...form, text: val });
 						}}
 					/>
-					{error && <p className="error-message">{error}</p>}{" "}
+					{error && <p className="error-message">{error}</p>}
 					<div className="modal-buttons">
 						<button
+							className="button-modale-close"
 							type="button"
 							onClick={onClose}
-							className="button-modale"
 							disabled={loading}
 						>
 							Chiudi
 						</button>
+					</div>
+					<div className="modal-buttons2">
 						<button
-							className="button-modale"
+							className="button-modale-post"
 							type="submit"
 							disabled={loading || !form.text.trim()}
 						>
-							{loading ? "Caricamento..." : "Posta"}
+							{loading ? "Caricamento..." : "Pubblica"}
 						</button>
 					</div>
-				</div>
+				</form>
 			</div>
 		</div>
 	);

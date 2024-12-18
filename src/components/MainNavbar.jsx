@@ -45,7 +45,7 @@ function MainNavbar() {
 				<li>
 					<Link to="/Home" className="navbar-link to-home">
 						<i class="fa-solid fa-comment-dots main-nav-icon"></i>
-						<p>Messaggistica</p>
+						<p>Chat</p>
 					</Link>
 				</li>
 

@@ -24,7 +24,10 @@ const Posts = () => {
 				);
 				if (!response.ok) throw new Error("Rejected");
 				const data = await response.json();
-				setPosts(data);
+				const sortedPosts = data.sort(
+					(a, b) => new Date(b.createdAt) - new Date(a.createdAt),
+				);
+				setPosts(sortedPosts);
 				console.log(data);
 			} catch (err) {
 				setError(true);
@@ -42,7 +45,7 @@ const Posts = () => {
 	return (
 		<section className="posts">
 			{posts.length > 0 &&
-				posts.slice(0, 79).map(post => <Post key={post._id} post={post} />)}
+				posts.slice(0, 99).map(post => <Post key={post._id} post={post} />)}
 		</section>
 	);
 };
