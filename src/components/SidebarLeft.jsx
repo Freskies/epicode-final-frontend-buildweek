@@ -1,7 +1,7 @@
 import profilepic from "../assets/pics/profilepic.jpeg";
 import cover from "../assets/pics/cover.jpg";
 import { Link } from "react-router-dom";
-import "../assets/style/giulio2.css"
+import "../assets/style/giulio2.css";
 const SidebarLeft = () => {
 	return (
 		<aside className="profile">
@@ -29,11 +29,14 @@ const SidebarLeft = () => {
 						<i className="fa-solid fa-star"></i>
 					</p>
 					<div className="provaper">
-					<a href="#">
-					<p> <i class="fa-brands fa-linkedin"></i> Prova per 0 EUR</p>
-					</a>
+						<a href="#">
+							<p>
+								{" "}
+								<i className="fa-brands fa-linkedin"></i> Prova per 0 EUR
+							</p>
+						</a>
 					</div>
-					<hr/>
+					<hr />
 					{/* TODO with box shadow or border */}
 					<p className="paragraph">
 						<i className="fa-solid fa-bookmark"></i>
@@ -47,12 +50,17 @@ const SidebarLeft = () => {
 						<a href="#">Gruppi</a>
 					</div>
 					<div className="gruppieventi">
-						<a id="eventi" href="#">Eventi</a>
-						<a href="#"> <i class="fa-solid fa-plus plusicon"></i></a>
-					</div>
-						<hr/>
+						<a id="eventi" href="#">
+							Eventi
+						</a>
 						<a href="#">
-					<p className="scopri"> Scopri di più </p>
+							{" "}
+							<i className="fa-solid fa-plus plusicon"></i>
+						</a>
+					</div>
+					<hr />
+					<a href="#">
+						<p className="scopri"> Scopri di più </p>
 					</a>
 				</div>
 			</figure>
