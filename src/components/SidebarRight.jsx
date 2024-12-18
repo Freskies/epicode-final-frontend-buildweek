@@ -34,8 +34,8 @@ const SidebarRight = () => {
 				</div>
 			</div>
 			<div className="ads-card ads-card--2">
-				<img src={women_png} alt="woman" className="ads-image" />
 				<footer className="footer">
+					<img src={women_png} alt="woman" className="ads-image" />
 					<ul className="footer-links">
 						<li>informazioni accesibilità</li>
 						<li>Centro assistenza</li>

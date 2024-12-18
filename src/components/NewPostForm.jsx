@@ -1,12 +1,32 @@
-import profilepic from "../assets/pics/profilepic.jpeg";
+import { useState } from "react";
+import profilepic from "../assets/empi.jpeg";
+import Modal from "./modale";
 
 function NewPostForm() {
+	const [isModalOpen, setIsModalOpen] = useState(false);
+
+	const openModal = () => {
+		setIsModalOpen(true);
+	};
+
+	const closeModal = () => {
+		setIsModalOpen(false);
+	};
+
+	const handlePostSubmit = data => {
+		console.log("Post inviato:", data);
+
+		closeModal();
+	};
+
 	return (
-		<form className="new-post-form">
+		<div className="new-post-form">
 			<header className="new-post-header">
 				{/* TODO profile image */}
 				<img className="new-post-profile-image" src={profilepic} alt="" />
-				<button className="btn-create-post">Crea un Post</button>
+				<button className="btn-create-post" onClick={openModal}>
+					Crea un Post
+				</button>
 			</header>
 			<div className="new-post-actions-container">
 				<div className="action-wrapper">
@@ -21,8 +41,12 @@ function NewPostForm() {
 					<i className="fa-solid fa-newspaper" data-btn="write-article"></i>
 					<p>Scrivi un articolo</p>
 				</div>
+
+				{isModalOpen && (
+					<Modal onClose={closeModal} onPostSubmit={handlePostSubmit} />
+				)}
 			</div>
-		</form>
+		</div>
 	);
 }
 
