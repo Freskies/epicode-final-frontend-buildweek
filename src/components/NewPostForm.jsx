@@ -1,5 +1,5 @@
 import { useState } from "react";
-import emptyIcon from "../assets/empi.jpeg";
+import profilepic from "../assets/empi.jpeg";
 import Modal from "./modale";
 
 function NewPostForm() {
@@ -24,7 +24,9 @@ function NewPostForm() {
 			<header className="new-post-header">
 				{/* TODO profile image */}
 				<img className="new-post-profile-image" src={profilepic} alt="" />
-				<button className="btn-create-post">Crea un Post</button>
+				<button className="btn-create-post" onClick={openModal}>
+					Crea un Post
+				</button>
 			</header>
 			<div className="new-post-actions-container">
 				<div className="action-wrapper">
