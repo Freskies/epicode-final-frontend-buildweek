@@ -10,15 +10,15 @@ function NewPostForm() {
 			</header>
 			<div className="new-post-actions-container">
 				<div className="action-wrapper">
-					<i id="postimg1" className="fa-solid fa-image"> </i>
+					<i className="fa-solid fa-image" data-btn="multimedia-contents"></i>
 					<p>Contenuti Multimediali</p>
 				</div>
 				<div className="action-wrapper">
-					<i id="postimg2" className="fa-solid fa-calendar-days"> </i>
+					<i className="fa-solid fa-calendar-days" data-btn="events"></i>
 					<p>Eventi</p>
 				</div>
 				<div className="action-wrapper">
-					<i id="postimg3" className="fa-solid fa-newspaper"> </i>
+					<i className="fa-solid fa-newspaper" data-btn="write-article"></i>
 					<p>Scrivi un articolo</p>
 				</div>
 			</div>
