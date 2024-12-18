@@ -65,7 +65,7 @@ function MainNavbar() {
 
 						<div className="profile-dropdown-wrapper">
 							<p>Tu</p>
-							<i className="fas fa-sort-down" id="dropdown"></i>
+							<i className="fas fa-sort-down"></i>
 						</div>
 					</Link>
 				</li>

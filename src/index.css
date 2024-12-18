@@ -7,7 +7,7 @@
 	--primary-color: #fff;
 	--secondary-color: #f1f1e9;
 	/* LAYOUT */
-	--navbar-height: 7.5rem;
+	--navbar-height: 9rem;
 	--aside-width: 32rem;
 	--border-radius: 15px;
 	--border-radius-large: 30px;
@@ -64,11 +64,6 @@ a:visited {
 .main-navbar {
 	height: var(--navbar-height);
 	background-color: #fff;
-
-	i {
-		font-size: 3rem;
-		color: #5c5c5c;
-	}
 }
 
 .main {
@@ -120,6 +115,15 @@ a:visited {
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
+
+	i {
+		font-size: 3rem;
+		color: #5c5c5c;
+	}
+
+	.fa-sort-down {
+		font-size: 1.8rem;
+	}
 }
 
 .linkedin-logo {
@@ -131,8 +135,6 @@ a:visited {
 	align-items: center;
 	gap: 1.2rem;
 }
-
-/* TODO search bar */
 
 .search-wrapper {
 	position: relative;
@@ -182,8 +184,6 @@ a:visited {
 	width: var(--profile-photo-width);
 }
 
-/* TODO center icon */
-
 .profile-photo {
 	border-radius: 50%;
 	height: var(--profile-photo-width);
@@ -193,6 +193,7 @@ a:visited {
 
 .profile-dropdown-wrapper {
 	display: flex;
+	align-items: center;
 	gap: 0.4rem;
 }
 
