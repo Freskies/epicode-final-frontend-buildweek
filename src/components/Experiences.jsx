@@ -1,6 +1,7 @@
 // Experiences.jsx
 import React, { useState, useEffect } from 'react';
 import "../assets/style/giulio2.css";
+
 const Experiences = ({ token, userId }) => {
     const [experiences, setExperiences] = useState([]);
     const [newExperience, setNewExperience] = useState({

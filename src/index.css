@@ -240,7 +240,6 @@ a:visited {
 	background-color: #fff;
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 	overflow: hidden;
-	margin-top: 10rem;
 }
 
 .cover {
@@ -299,7 +298,6 @@ a:visited {
 .linkcard {
 	margin-left: 1rem;
 	margin-top: 1rem;
-
 }
 
 .profile-link a {
@@ -314,7 +312,6 @@ a:visited {
 .new-post-form {
 	margin-bottom: 2.4rem;
 	width: 70rem;
-	margin-top: 10rem;
 }
 
 .btn-create-post {
@@ -425,7 +422,6 @@ a:visited {
 	display: flex;
 	flex-direction: column;
 	border-radius: var(--border-radius);
-	margin-top: 10rem;
 }
 
 .ads-card > h2 {
