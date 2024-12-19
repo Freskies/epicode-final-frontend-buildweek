@@ -36,7 +36,7 @@ const Posts = () => {
 	const sortingFn = selectedOption => {
 		switch (selectedOption) {
 			case "più rilevanti per primi":
-				return post => post.media?.length > 0;
+				return post => post.image !== null;
 			case "più recenti per primi":
 			default:
 				return (a, b) => new Date(b.updatedAt) - new Date(a.updatedAt);

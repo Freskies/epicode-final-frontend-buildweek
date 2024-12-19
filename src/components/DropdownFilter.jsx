@@ -14,7 +14,6 @@ function DropdownFilter({ sortMethod, setSortMethod }) {
 	const toggleDropdown = () => setOpen(prevOpen => !prevOpen);
 
 	const handleOptionSelect = e => {
-		console.log(e.target.closest("div").dataset);
 		setSortMethod(e.target.closest("div").dataset.sortMethod);
 		setOpen(false);
 	};
