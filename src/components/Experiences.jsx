@@ -56,6 +56,7 @@ const Experiences = () => {
 
 	return (
 		<div className="experiences">
+			<div className="titlejob">
 			<h3>Esperienze</h3>
 			<ul className="experience-list" onClick={handleDelete}>
 				{experiences.map(experience => (
@@ -63,7 +64,9 @@ const Experiences = () => {
 				))}
 			</ul>
 
-			<h4>Aggiungi una nuova esperienza</h4>
+				<hr/>
+			<h4 className="addsexp">Aggiungi una nuova esperienza</h4>
+			</div>
 			<form className="new-experience-form" onSubmit={handleAddExperience}>
 				<input
 					type="text"
