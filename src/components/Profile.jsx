@@ -4,7 +4,7 @@ import "./../assets/various-css/valerio.css";
 import cover from "../assets/pics/cover.jpg";
 import Experiences from "./Experiences";
 
-const Settings = () => {
+const Profile = () => {
 	// your profile
 	const {
 		name: firstName,
@@ -35,4 +35,4 @@ const Settings = () => {
 	);
 };
 
-export default Settings;
+export default Profile;
