@@ -3,6 +3,7 @@ import NewPostForm from "./NewPostForm";
 import Posts from "./Posts";
 import SidebarRight from "./SidebarRight";
 import "../assets/style/general.css";
+import DropdownFilter from "./DropdownFilter";
 
 const Home = () => {
 	return (
@@ -12,6 +13,7 @@ const Home = () => {
 			</section>
 			<section className="post-section">
 				<NewPostForm />
+				<DropdownFilter />
 				<Posts />
 			</section>
 			<section className="right">

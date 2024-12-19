@@ -10,9 +10,9 @@
 	--navbar-height: 9rem;
 	--aside-width: 32rem;
 	--main-width: minmax(60rem, 80rem);
-	--border-radius: 15px;
-	--border-radius-large: 30px;
-	--border-radius-small: 8.5px;
+	--border-radius: 10px;
+	--border-radius-large: calc(var(--border-radius) * 2);
+	--border-radius-small: calc(var(--border-radius) / 2);
 	--margin-beetween: 1.6rem;
 	/* NAVBAR */
 	--profile-photo-width: 4rem;
