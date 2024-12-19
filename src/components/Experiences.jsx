@@ -50,7 +50,7 @@ const Experiences = () => {
 			</ul>
 
 			<h4>Aggiungi una nuova esperienza</h4>
-			<form onSubmit={handleAddExperience}>
+			<form className="new-experience-form" onSubmit={handleAddExperience}>
 				<input
 					type="text"
 					name="role"
