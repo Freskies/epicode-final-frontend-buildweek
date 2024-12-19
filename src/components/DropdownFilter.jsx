@@ -15,6 +15,7 @@ function DropdownFilter({ onOptionSelect, selectedOption }) { // Modificato per 
   // Funzione che va ad alterare il valore del dropdown
   const handleOptionSelect = (option) => {
     onOptionSelect(option) // Usa la funzione passata per aggiornare l'opzione selezionata
+    console.log("Selected Option:", selectedOption);
     setOpen(false)
   };
 
