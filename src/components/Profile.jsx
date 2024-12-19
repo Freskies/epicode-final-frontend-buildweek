@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import "./../assets/various-css/valerio.css";
 import cover from "../assets/pics/cover.jpg";
 import Experiences from "./Experiences";
-
+import "../assets/style/giulio3.css"
 const Profile = () => {
 	// your profile
 	const {
