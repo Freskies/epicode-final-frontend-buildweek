@@ -356,13 +356,27 @@ a:visited {
 	flex-direction: row;
 }
 
-.post-profile-image,
+.post-profile-image {
+	width: 4rem;
+	height: 4rem;
+	border-radius: 50%;
+	margin: 0 1rem 1rem 0;
+	object-fit: cover;
+	margin-top: 4px;
+}
+
+.post-body {
+	padding: 15px;
+	border-bottom: 1px solid black;
+}
+
 .new-post-profile-image {
 	width: 4rem;
 	height: 4rem;
 	border-radius: 50%;
 	margin: 0 1rem 1rem 0;
 	object-fit: cover;
+	margin-top: -5px;
 }
 
 .post-image {
@@ -374,6 +388,22 @@ a:visited {
 .new-post-actions-container {
 	display: flex;
 	justify-content: space-around;
+	margin-top: 1rem;
+}
+.fa-thumbs-up {
+	color: #00a2ff;
+}
+
+.fa-comment {
+	color: green;
+}
+
+.fa-paper-plane {
+	color: #ff9900;
+}
+
+.fa-share {
+	color: #ca0000;
 }
 
 .new-post-actions-container {
@@ -426,6 +456,9 @@ a:visited {
 	flex-direction: column;
 	border-radius: var(--border-radius);
 	margin-top: 10rem;
+}
+.ads-card {
+	box-shadow: #000 0px 0px 2px 0px;
 }
 
 .ads-card > h2 {

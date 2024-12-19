@@ -22,11 +22,15 @@ function NewPostForm() {
 	return (
 		<div className="new-post-form">
 			<header className="new-post-header">
+<<<<<<< Updated upstream
 				<img
 					className="new-post-profile-image"
 					src={profilepic}
 					alt="profile-img"
 				/>
+=======
+				<img className="post-profile-image" src={profileImage} alt="profile" />
+>>>>>>> Stashed changes
 				<button className="btn-create-post" onClick={openModal}>
 					Crea un Post
 				</button>
