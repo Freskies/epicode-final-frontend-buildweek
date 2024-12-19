@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+import "../assets/style/giulio3.css"
 const Experiences = ({ token, userId }) => {
 	const [experiences, setExperiences] = useState([]);
 	const [newExperience, setNewExperience] = useState({
@@ -118,7 +118,7 @@ const Experiences = ({ token, userId }) => {
 
 	return (
 		<div className="experiences">
-			<h3>Esperienze</h3>
+			<h3 className="exp1">Esperienze</h3>
 
 			<div className="experience-list">
 				{experiences.map(exp => (
@@ -139,8 +139,8 @@ const Experiences = ({ token, userId }) => {
 				))}
 			</div>
 
-			<h4>Aggiungi una nuova esperienza</h4>
-			<form onSubmit={addExperience}>
+			<h4 className="exp2">Aggiungi una nuova esperienza</h4>
+			<form className="exp-form" onSubmit={addExperience}>
 				<input
 					type="text"
 					name="role"
