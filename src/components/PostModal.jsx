@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import PropTypes from "prop-types";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "../assets/various-css/gabriele.css";
-import { addPost } from "./../fetchFunctions";
+import { addPost, getPosts } from "./../fetchFunctions";
+import { setPosts } from "../redux/action/posts";
 
 Modal.propTypes = {
 	onClose: PropTypes.func.isRequired,
@@ -11,16 +12,26 @@ Modal.propTypes = {
 function Modal({ onClose }) {
 	const [loading, setLoading] = useState(false);
 
+	// FROM HANDLING
+
+	const [form, setForm] = useState({
+		text: "",
+		imageUrl: "",
+	});
+
 	const {
 		name: firstName,
 		surname: lastName,
 		image: profileImage,
 	} = useSelector(({ profile }) => profile);
 
-	const [form, setForm] = useState({
-		text: "",
-		imageUrl: "",
-	});
+	// SUBMIT
+
+	const dispatch = useDispatch();
+	const setterPosts = useCallback(
+		posts => dispatch(setPosts(posts)),
+		[dispatch],
+	);
 
 	const handleSubmit = async e => {
 		e.preventDefault();
@@ -28,6 +39,7 @@ function Modal({ onClose }) {
 		await addPost(form);
 		setLoading(false);
 		onClose();
+		getPosts(setterPosts);
 	};
 
 	return (

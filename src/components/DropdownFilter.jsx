@@ -1,85 +1,85 @@
 import "./dropdown.css";
 import { useState, useEffect, useRef } from "react";
+import PropTypes from "prop-types";
 
-function DropdownFilter({ onOptionSelect, selectedOption }) { // Modificato per ricevere selectedOption e onOptionSelect
+DropdownFilter.propTypes = {
+	sortMethod: PropTypes.string.isRequired,
+	setSortMethod: PropTypes.func.isRequired,
+};
 
-  // Imposto il valore di default e lo stato del dropdown
-  const [open, setOpen] = useState(false)
-  const dropdownRef = useRef(null) // Crea un riferimento per il dropdown
+function DropdownFilter({ sortMethod, setSortMethod }) {
+	const [open, setOpen] = useState(false);
+	const dropdownRef = useRef(null);
 
-  // Funzione che permette di aprire e chiudere il dropdown controllando se è falso o vero
-  const toggleDropdown = () => {
-    setOpen((prevOpen) => !prevOpen);
-  };
+	const toggleDropdown = () => setOpen(prevOpen => !prevOpen);
 
-  // Funzione che va ad alterare il valore del dropdown
-  const handleOptionSelect = (option) => {
-    onOptionSelect(option) // Usa la funzione passata per aggiornare l'opzione selezionata
-    console.log("Selected Option:", selectedOption);
-    setOpen(false)
-  };
+	const handleOptionSelect = e => {
+		console.log(e.target.closest("div").dataset);
+		setSortMethod(e.target.closest("div").dataset.sortMethod);
+		setOpen(false);
+	};
 
-  // Funzione che gestisce l'evento per chiudere il dropdown se si clicca fuori
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setOpen(false);
-      }
-    };
+	// click outside close the dropdown
+	useEffect(() => {
+		const handleClickOutside = event => {
+			if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+				setOpen(false);
+			}
+		};
 
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
+		document.addEventListener("mousedown", handleClickOutside);
+		return () => {
+			document.removeEventListener("mousedown", handleClickOutside);
+		};
+	}, []);
 
-  return (
-    <div ref={dropdownRef}> {/* Assegna il riferimento all'elemento del dropdown */}
-      <div 
-        onClick={toggleDropdown} 
-        className={`dropdown-btn ${open ? "button-open" : ""}`}
-      >
-        <p className="riga">
-          <hr/>
-        </p>
-        
-        <p className="intro">
-          Seleziona la visualizzazione del feed:
-        </p>
-
-        <span className="selection">
-          {selectedOption} {/* Usa il valore passato */}
-        </span>
-        
-        <span>
-          <svg 
-            xmlns="http://www.w3.org/2000/svg" 
-            width="16" 
-            height="16" 
-            fill="currentColor" 
-            className="bi bi-caret-down-fill toggle-icon" 
-            viewBox="0 0 16 16"
-          >
-            <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
-          </svg>
-        </span>
-      </div>
-
-      {open && (
-        <div className={`dropdown-content ${open ? "content-open" : ""}`}>
-          <div className="scelta" onClick={() => handleOptionSelect("più recenti per primi")}>
-            <p>più recenti per primi</p>
-          </div>
-          <div className="scelta" onClick={() => handleOptionSelect("più rilevanti per primi")}>
-            <p>più rilevanti per primi</p>
-          </div>
-          <p className="description">
-            Questa opzione influirà soltanto sulla visualizzazione del tuo feed attuale su questo dispositivo. Puoi modificare la visualizzazione predefinita nelle Impostazioni.
-          </p>
-        </div>
-      )}
-    </div>
-  );
+	return (
+		<div ref={dropdownRef}>
+			<div
+				onClick={toggleDropdown}
+				className={`dropdown-btn ${open ? "button-open" : ""}`}
+			>
+				<hr />
+				<p className="intro">Seleziona la visualizzazione del feed:</p>
+				<span className="selection">{sortMethod}</span>
+				<span>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="16"
+						height="16"
+						fill="currentColor"
+						className="bi bi-caret-down-fill toggle-icon"
+						viewBox="0 0 16 16"
+					>
+						<path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+					</svg>
+				</span>
+			</div>
+			{open && (
+				<div className={`dropdown-content ${open ? "content-open" : ""}`}>
+					<div
+						className="scelta"
+						data-sort-method="più recenti per primi"
+						onClick={handleOptionSelect}
+					>
+						<p>più recenti per primi</p>
+					</div>
+					<div
+						className="scelta"
+						data-sort-method="più rilevanti per primi"
+						onClick={handleOptionSelect}
+					>
+						<p>più rilevanti per primi</p>
+					</div>
+					<p className="description">
+						Questa opzione influirà soltanto sulla visualizzazione del tuo feed
+						attuale su questo dispositivo. Puoi modificare la visualizzazione
+						predefinita nelle Impostazioni.
+					</p>
+				</div>
+			)}
+		</div>
+	);
 }
 
-export default DropdownFilter
+export default DropdownFilter;
