@@ -1,12 +1,11 @@
 import "./dropdown.css";
 import { useState, useEffect, useRef } from "react";
 
-function DropdownFilter({ posts }) {
-	
+function DropdownFilter({ onOptionSelect, selectedOption }) { // Modificato per ricevere selectedOption e onOptionSelect
+
   // Imposto il valore di default e lo stato del dropdown
-  const [open, setOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState("più recenti per primi");
-  const dropdownRef = useRef(null); // Crea un riferimento per il dropdown
+  const [open, setOpen] = useState(false)
+  const dropdownRef = useRef(null) // Crea un riferimento per il dropdown
 
   // Funzione che permette di aprire e chiudere il dropdown controllando se è falso o vero
   const toggleDropdown = () => {
@@ -15,8 +14,8 @@ function DropdownFilter({ posts }) {
 
   // Funzione che va ad alterare il valore del dropdown
   const handleOptionSelect = (option) => {
-    setSelectedOption(option);
-    setOpen(false);
+    onOptionSelect(option) // Usa la funzione passata per aggiornare l'opzione selezionata
+    setOpen(false)
   };
 
   // Funzione che gestisce l'evento per chiudere il dropdown se si clicca fuori
@@ -48,7 +47,7 @@ function DropdownFilter({ posts }) {
         </p>
 
         <span className="selection">
-          {selectedOption}
+          {selectedOption} {/* Usa il valore passato */}
         </span>
         
         <span>
@@ -82,4 +81,4 @@ function DropdownFilter({ posts }) {
   );
 }
 
-export default DropdownFilter;
+export default DropdownFilter

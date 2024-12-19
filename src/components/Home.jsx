@@ -12,7 +12,6 @@ const Home = () => {
 			</section>
 			<section className="post-section">
 				<NewPostForm />
-				<DropdownFilter />
 				<Posts />
 			</section>
 			<section className="right">
