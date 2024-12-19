@@ -1,8 +1,8 @@
 import { useState, useEffect, useCallback } from "react";
-import { STRIVE_STUDENT_API_KEY } from "./../api_key";
 import { useDispatch, useSelector } from "react-redux";
 import { addExperience, getExperiences } from "./../fetchFunctions";
 import { setExperiences } from "./../redux/action/experiences";
+import Experience from "./Experience";
 
 const Experiences = () => {
 	const { _id: profileId } = useSelector(({ profile }) => profile);
@@ -36,28 +36,6 @@ const Experiences = () => {
 		setNewExperience(prev => ({ ...prev, [name]: value }));
 	};
 
-	// Elimina un'esperienza
-	const deleteExperience = async expId => {
-		try {
-			const response = await fetch(
-				`https://striveschool-api.herokuapp.com/api/profile/${profileId}/experiences/${expId}`,
-				{
-					method: "DELETE",
-					headers: {
-						Authorization: STRIVE_STUDENT_API_KEY,
-						"Content-Type": "application/json",
-					},
-				},
-			);
-
-			if (!response.ok)
-				throw new Error("Errore nell'eliminazione dell'esperienza");
-			getExperiences(); // Ricarica le esperienze
-		} catch (error) {
-			console.error("Errore nell'eliminazione dell'esperienza:", error);
-		}
-	};
-
 	useEffect(() => {
 		getExperiences(profileId, setterExperiences);
 	}, [profileId, setterExperiences]);
@@ -65,24 +43,11 @@ const Experiences = () => {
 	return (
 		<div className="experiences">
 			<h3>Esperienze</h3>
-			<div className="experience-list">
-				{experiences.map(exp => (
-					<div key={exp._id} className="experience-item">
-						<h4>
-							{exp.role} at {exp.company}
-						</h4>
-						<p>
-							{exp.startDate} - {exp.endDate || "Present"}
-						</p>
-						<p>{exp.description}</p>
-						<p>{exp.area}</p>
-
-						<input type="file" onChange={e => handleImageUpload(e, exp._id)} />
-
-						<button onClick={() => deleteExperience(exp._id)}>Elimina</button>
-					</div>
+			<ul className="experience-list">
+				{experiences.map(experience => (
+					<Experience key={experience._id} experience={experience} />
 				))}
-			</div>
+			</ul>
 
 			<h4>Aggiungi una nuova esperienza</h4>
 			<form onSubmit={handleAddExperience}>

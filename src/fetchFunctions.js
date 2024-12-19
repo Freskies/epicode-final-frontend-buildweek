@@ -71,6 +71,25 @@ export const addExperience = async (profileId, experience) => {
 	}
 };
 
+export const deleteExperience = async (profileId, experienceId) => {
+	try {
+		const response = await fetch(
+			`https://striveschool-api.herokuapp.com/api/profile/${profileId}/experiences/${experienceId}`,
+			{
+				method: "DELETE",
+				headers: {
+					Authorization: STRIVE_STUDENT_API_KEY,
+					"Content-Type": "application/json",
+				},
+			},
+		);
+
+		if (!response.ok) throw new Error(`Errore HTTP: ${response.status}`);
+	} catch (error) {
+		console.error("Errore nell'eliminazione dell'esperienza:", error);
+	}
+};
+
 // other profiles boilerplate
 // Profiles
 // useEffect(() => {
