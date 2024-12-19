@@ -23,14 +23,12 @@ const Experiences = () => {
 		area: "",
 	});
 
-	// Aggiungi una nuova esperienza
 	const handleAddExperience = async e => {
 		e.preventDefault();
 		addExperience(profileId, newExperience);
 		getExperiences(profileId, setterExperiences);
 	};
 
-	// Gestisci cambiamenti nei campi del modulo
 	const handleInputChange = e => {
 		const { name, value } = e.target;
 		setNewExperience(prev => ({ ...prev, [name]: value }));
