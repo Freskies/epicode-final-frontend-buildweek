@@ -1,7 +1,19 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
+import { STRIVE_STUDENT_API_KEY } from "./../api_key";
+import { useDispatch, useSelector } from "react-redux";
+import { addExperience, getExperiences } from "./../fetchFunctions";
+import { setExperiences } from "./../redux/action/experiences";
 
-const Experiences = ({ token, userId }) => {
-	const [experiences, setExperiences] = useState([]);
+const Experiences = () => {
+	const { _id: profileId } = useSelector(({ profile }) => profile);
+	const experiences = useSelector(({ experiences }) => experiences);
+
+	const dispatch = useDispatch();
+	const setterExperiences = useCallback(
+		experiences => dispatch(setExperiences(experiences)),
+		[dispatch],
+	);
+
 	const [newExperience, setNewExperience] = useState({
 		role: "",
 		company: "",
@@ -11,52 +23,11 @@ const Experiences = ({ token, userId }) => {
 		area: "",
 	});
 
-	const [image, setImage] = useState(null);
-
-	// Recupera le esperienze dell'utente
-	const getExperiences = async () => {
-		try {
-			const response = await fetch(
-				`https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences`,
-				{
-					method: "GET",
-					headers: {
-						Authorization: `Bearer ${token}`,
-						"Content-Type": "application/json",
-					},
-				},
-			);
-
-			if (!response.ok) throw new Error(`Errore HTTP: ${response.status}`);
-			const data = await response.json();
-			setExperiences(data);
-		} catch (error) {
-			console.error("Errore nel recupero delle esperienze:", error);
-		}
-	};
-
 	// Aggiungi una nuova esperienza
-	const addExperience = async e => {
+	const handleAddExperience = async e => {
 		e.preventDefault();
-		try {
-			const response = await fetch(
-				`https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences`,
-				{
-					method: "POST",
-					headers: {
-						Authorization: `Bearer ${token}`,
-						"Content-Type": "application/json",
-					},
-					body: JSON.stringify(newExperience),
-				},
-			);
-
-			if (!response.ok) throw new Error(`Errore HTTP: ${response.status}`);
-			await response.json();
-			getExperiences(); // Ricarica le esperienze
-		} catch (error) {
-			console.error("Errore nell'aggiunta dell'esperienza:", error);
-		}
+		addExperience(profileId, newExperience);
+		getExperiences(profileId, setterExperiences);
 	};
 
 	// Gestisci cambiamenti nei campi del modulo
@@ -65,39 +36,15 @@ const Experiences = ({ token, userId }) => {
 		setNewExperience(prev => ({ ...prev, [name]: value }));
 	};
 
-	// Carica un'immagine per l'esperienza
-	const handleImageUpload = async (e, expId) => {
-		const formData = new FormData();
-		formData.append("experience", e.target.files[0]);
-
-		try {
-			const response = await fetch(
-				`https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences/${expId}/picture`,
-				{
-					method: "POST",
-					headers: {
-						Authorization: `Bearer ${token}`,
-					},
-					body: formData,
-				},
-			);
-
-			if (!response.ok) throw new Error("Errore nel caricamento dell'immagine");
-			getExperiences(); // Ricarica le esperienze
-		} catch (error) {
-			console.error("Errore nel caricamento dell'immagine:", error);
-		}
-	};
-
 	// Elimina un'esperienza
 	const deleteExperience = async expId => {
 		try {
 			const response = await fetch(
-				`https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences/${expId}`,
+				`https://striveschool-api.herokuapp.com/api/profile/${profileId}/experiences/${expId}`,
 				{
 					method: "DELETE",
 					headers: {
-						Authorization: `Bearer ${token}`,
+						Authorization: STRIVE_STUDENT_API_KEY,
 						"Content-Type": "application/json",
 					},
 				},
@@ -111,15 +58,13 @@ const Experiences = ({ token, userId }) => {
 		}
 	};
 
-	// Carica le esperienze al montaggio del componente
 	useEffect(() => {
-		getExperiences();
-	}, []);
+		getExperiences(profileId, setterExperiences);
+	}, [profileId, setterExperiences]);
 
 	return (
 		<div className="experiences">
 			<h3>Esperienze</h3>
-
 			<div className="experience-list">
 				{experiences.map(exp => (
 					<div key={exp._id} className="experience-item">
@@ -140,7 +85,7 @@ const Experiences = ({ token, userId }) => {
 			</div>
 
 			<h4>Aggiungi una nuova esperienza</h4>
-			<form onSubmit={addExperience}>
+			<form onSubmit={handleAddExperience}>
 				<input
 					type="text"
 					name="role"
@@ -182,7 +127,7 @@ const Experiences = ({ token, userId }) => {
 					value={newExperience.area}
 					onChange={handleInputChange}
 				/>
-				<button type="submit">Aggiungi Esperienza</button>
+				<button>Aggiungi Esperienza</button>
 			</form>
 		</div>
 	);
