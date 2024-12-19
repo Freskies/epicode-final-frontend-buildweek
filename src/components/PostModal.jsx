@@ -1,14 +1,8 @@
-import "../assets/style/modale.css";
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { setProfile } from "./../redux/action/profile";
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect, useCallback } from "react";
 import { fetchProfileIfNotExist } from "./../fetchFunctions";
-<<<<<<< Updated upstream:src/components/modale.jsx
-=======
 import { STRIVE_STUDENT_API_KEY } from "../api_key";
-import "../assets/various-css/gabriele.css";
->>>>>>> Stashed changes:src/components/PostModal.jsx
 
 function Modal({ onClose, onPostSubmit }) {
 	const {
@@ -27,13 +21,9 @@ function Modal({ onClose, onPostSubmit }) {
 
 	const [form, setForm] = useState({
 		text: "",
-		imageUrl: "",
 	});
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(null);
-
-	const STRIVE_STUDENT_API_KEY =
-		"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzVmZWM1ODBlYTI4NjAwMTUyOGI5MzQiLCJpYXQiOjE3MzQzMzk2NzMsImV4cCI6MTczNTU0OTI3M30.cJn22VGMuyvv9kcjRR5HjVco2gh8W9bucPNn2jYypkM";
 
 	const handleSubmit = async e => {
 		e.preventDefault();
@@ -49,10 +39,7 @@ function Modal({ onClose, onPostSubmit }) {
 						Authorization: STRIVE_STUDENT_API_KEY,
 						"Content-Type": "application/json",
 					},
-					body: JSON.stringify({
-						text: form.text,
-						image: form.imageUrl,
-					}),
+					body: JSON.stringify({ text: form.text }),
 				},
 			);
 
@@ -63,6 +50,7 @@ function Modal({ onClose, onPostSubmit }) {
 			const data = await response.json();
 
 			onPostSubmit(data);
+
 			onClose();
 		} catch (err) {
 			console.error("Errore:", err.message);
@@ -71,7 +59,6 @@ function Modal({ onClose, onPostSubmit }) {
 			setLoading(false);
 		}
 	};
-
 	useEffect(() => {
 		fetchProfileIfNotExist(profileId, setterProfile);
 	}, [profileId, setterProfile]);
@@ -104,16 +91,6 @@ function Modal({ onClose, onPostSubmit }) {
 							setForm({ ...form, text: val });
 						}}
 					/>
-					<input
-						type="text"
-						placeholder="Inserisci l'URL di un'immagine..."
-						className="input-image-url"
-						value={form.imageUrl}
-						onChange={e => {
-							const val = e.target.value;
-							setForm({ ...form, imageUrl: val });
-						}}
-					/>
 					{error && <p className="error-message">{error}</p>}
 					<div className="modal-buttons">
 						<button
@@ -129,7 +106,7 @@ function Modal({ onClose, onPostSubmit }) {
 						<button
 							className="button-modale-post"
 							type="submit"
-							disabled={loading || !form.text.trim() || !form.imageUrl.trim()}
+							disabled={loading || !form.text.trim()}
 						>
 							{loading ? "Caricamento..." : "Pubblica"}
 						</button>

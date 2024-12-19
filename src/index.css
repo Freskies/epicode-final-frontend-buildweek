@@ -10,9 +10,9 @@
 	--navbar-height: 9rem;
 	--aside-width: 32rem;
 	--main-width: minmax(60rem, 80rem);
-	--border-radius: 15px;
-	--border-radius-large: 30px;
-	--border-radius-small: 8.5px;
+	--border-radius: 10px;
+	--border-radius-large: calc(var(--border-radius) * 2);
+	--border-radius-small: calc(var(--border-radius) / 2);
 	--margin-beetween: 1.6rem;
 	/* NAVBAR */
 	--profile-photo-width: 4rem;
@@ -70,7 +70,7 @@ a:visited {
 .main {
 	margin-top: var(--navbar-height);
 	display: grid;
-	place-content: center;
+	place-content: start center;
 	grid-template-columns: var(--aside-width) var(--main-width) var(--aside-width);
 	min-height: calc(100vh - var(--navbar-height));
 }
@@ -240,7 +240,6 @@ a:visited {
 	background-color: #fff;
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 	overflow: hidden;
-	margin-top: 10rem;
 }
 
 .cover {
@@ -287,24 +286,62 @@ a:visited {
 .stats > p:nth-child(even) {
 	font-weight: 600;
 }
-.profile-link {
-	margin-left: 1rem;
+
+.profile-links {
 	margin-bottom: 1rem;
+	font-weight: 400;
+
+	.fa-linkedin {
+		color: #ff9900;
+	}
+
+	.fa-bookbark {
+		color: #4a4a4a;
+	}
+
+	& > *:not(hr) {
+		margin-left: 1rem;
+	}
+
+	a {
+		font-weight: 500;
+		display: flex;
+		gap: 0.4rem;
+	}
+
+	a i {
+		width: 1.4rem;
+	}
 }
+
 .scopri {
 	text-align: center;
 	margin-bottom: 2rem;
 	margin-top: 1rem;
 }
+
 .linkcard {
 	margin-left: 1rem;
 	margin-top: 1rem;
-
 }
 
-.profile-link a {
-	color: #0073b1;
-	font-weight: bold;
+.groups-events-containter {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	color: #00aeff;
+	margin-bottom: 1rem;
+}
+
+.groups-events-containter a {
+	font-weight: 400;
+}
+
+.plusicon {
+	color: #000000c4;
+	font-size: large;
+	margin-right: 1rem;
 }
 
 /*******************************/
@@ -314,7 +351,6 @@ a:visited {
 .new-post-form {
 	margin-bottom: 2.4rem;
 	width: 70rem;
-	margin-top: 10rem;
 }
 
 .btn-create-post {
@@ -455,7 +491,6 @@ a:visited {
 	display: flex;
 	flex-direction: column;
 	border-radius: var(--border-radius);
-	margin-top: 10rem;
 }
 .ads-card {
 	box-shadow: #000 0px 0px 2px 0px;
