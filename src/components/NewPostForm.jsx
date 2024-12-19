@@ -7,22 +7,20 @@ function NewPostForm() {
 	const openModal = () => setIsModalOpen(true);
 	const closeModal = () => setIsModalOpen(false);
 
-	const handlePostSubmit = data => {
-		console.log("Post inviato:", data);
-		closeModal();
-	};
-
 	const {
 		name: firstName,
 		surname: lastName,
-		email,
 		image: profileImage,
 	} = useSelector(({ profile }) => profile);
 
 	return (
 		<div className="new-post-form">
 			<header className="new-post-header">
-				<img className="post-profile-image" src={profileImage} alt="profile" />
+				<img
+					className="post-profile-image"
+					src={profileImage}
+					alt={`${firstName} ${lastName}`}
+				/>
 				<button className="btn-create-post" onClick={openModal}>
 					Crea un Post
 				</button>
@@ -48,9 +46,7 @@ function NewPostForm() {
 					</a>
 				</div>
 
-				{isModalOpen && (
-					<PostModal onClose={closeModal} onPostSubmit={handlePostSubmit} />
-				)}
+				{isModalOpen && <PostModal onClose={closeModal} />}
 			</div>
 		</div>
 	);

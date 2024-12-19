@@ -1,5 +1,7 @@
 import { STRIVE_STUDENT_API_KEY } from "./api_key";
 
+// PROFILE
+
 export const fetchProfileIfNotExist = async (profileId, setterFn) => {
 	try {
 		// Check profile id
@@ -26,6 +28,36 @@ export const fetchProfileIfNotExist = async (profileId, setterFn) => {
 		throw error;
 	}
 };
+
+// OTHER PROFILES
+
+// other profiles boilerplate
+// Profiles
+// useEffect(() => {
+// 	(async () => {
+// 		try {
+// 			const response = await fetch("https://striveschool-api.herokuapp.com/api/profile/", {
+// 				method: "GET",
+// 				headers: {
+// 					Authorization: STRIVE_STUDENT_API_KEY,
+// 					"Content-Type": "application/json",
+// 				},
+// 			});
+
+// 			if (!response.ok) {
+// 				throw new Error(`HTTP error! status: ${response.status}`);
+// 			}
+
+// 			const profiles = await response.json();
+
+// 			console.log(profiles);
+// 		} catch (error) {
+// 			console.error("Si è verificato un errore:", error);
+// 		}
+// 	})();
+// }, []);
+
+// EXPERIENCES
 
 export const getExperiences = async (profileId, setterFn) => {
 	try {
@@ -90,28 +122,50 @@ export const deleteExperience = async (profileId, experienceId) => {
 	}
 };
 
-// other profiles boilerplate
-// Profiles
-// useEffect(() => {
-// 	(async () => {
-// 		try {
-// 			const response = await fetch("https://striveschool-api.herokuapp.com/api/profile/", {
-// 				method: "GET",
-// 				headers: {
-// 					Authorization: STRIVE_STUDENT_API_KEY,
-// 					"Content-Type": "application/json",
-// 				},
-// 			});
+// POSTS
 
-// 			if (!response.ok) {
-// 				throw new Error(`HTTP error! status: ${response.status}`);
-// 			}
+export const getPosts = async setterFn => {
+	try {
+		const response = await fetch(
+			`https://striveschool-api.herokuapp.com/api/posts/`,
+			{
+				method: "GET",
+				headers: {
+					Authorization: STRIVE_STUDENT_API_KEY,
+					"Content-Type": "application/json",
+				},
+			},
+		);
+		if (!response.ok) throw new Error("Rejected");
+		const posts = await response.json();
+		setterFn(posts);
+		console.log(posts); // TEMP
+	} catch (error) {
+		console.error("Errore nella fetch:", error);
+		throw error;
+	}
+};
 
-// 			const profiles = await response.json();
+export const addPost = async ({ text, image }) => {
+	try {
+		const response = await fetch(
+			`https://striveschool-api.herokuapp.com/api/posts/`,
+			{
+				method: "POST",
+				headers: {
+					Authorization: STRIVE_STUDENT_API_KEY,
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({ text, image }),
+			},
+		);
 
-// 			console.log(profiles);
-// 		} catch (error) {
-// 			console.error("Si è verificato un errore:", error);
-// 		}
-// 	})();
-// }, []);
+		if (!response.ok) throw new Error(`Errore HTTP: ${response.status}`);
+		const data = await response.json();
+		console.log("POST inviato", data);
+	} catch (error) {
+		console.error("Errore:", error.message);
+	}
+};
+
+// JOBS
