@@ -1,0 +1,45 @@
+.exp-form {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	max-width: 600px;
+	padding: 20px;
+	background-color: #f3f3f3;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.exp-form input,
+.exp-form textarea {
+	font-size: 18px;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	width: 100%;
+}
+
+.exp-form textarea {
+	resize: none;
+	height: 100px;
+}
+
+.exp-form button {
+	font-size: 18px;
+	padding: 10px 20px;
+	color: #fff;
+	background-color: #0073b1;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.exp-form button:hover {
+	background-color: #005582;
+}
+.exp1{margin-left: 2rem;
+margin-top: 1rem;}
+.exp2 {margin-left: 2rem;
+margin-top: 1rem;
+margin-bottom: 1rem;}
