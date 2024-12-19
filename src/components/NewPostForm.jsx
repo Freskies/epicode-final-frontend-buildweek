@@ -22,11 +22,7 @@ function NewPostForm() {
 	return (
 		<div className="new-post-form">
 			<header className="new-post-header">
-				<img
-					className="new-post-profile-image"
-					src={profileImage}
-					alt="profile"
-				/>
+				<img className="post-profile-image" src={profileImage} alt="profile" />
 				<button className="btn-create-post" onClick={openModal}>
 					Crea un Post
 				</button>
