@@ -28,7 +28,7 @@ function Post({
 					</h3>
 					<p>36.998 follower</p>
 
-					<p>{updatedAt.slice(0, 10) || "data non disponibile"}</p>
+					<p>{updatedAt.slice(0, 10) + ' ' + updatedAt.slice(11, 17) || "data non disponibile"}</p>
 				</div>
 			</header>
 			<main className="post-body">

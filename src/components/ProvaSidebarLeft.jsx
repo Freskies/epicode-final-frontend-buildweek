@@ -1,25 +1,37 @@
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
 import cover from "../assets/pics/cover.jpg";
+import "../assets/style/giulio3.css";
 
 const SidebarLeft = () => {
 	const {
-		name: firstName,
-		surname: lastName,
+		_id: userId,
+		name,
+		surname,
 		image: profileImage,
 	} = useSelector(({ profile }) => profile);
+
+	useEffect(() => {
+		const fetchData = async () => {
+			const profileData = await fetchUserProfile(userId);
+			if (profileData) {
+				dispatch(setUserProfile(profileData));
+			}
+		};
+
+		fetchData();
+	}, [userId]);
 
 	return (
 		<aside className="profile">
 			<figure className="aside-left-card aside-left-card--profile">
 				<img className="cover" src={cover} alt="cover" />
 				<img className="pic-profile" src={profileImage} alt="Profile" />
-
 				<div className="user-info">
 					<h2 className="user-name">
-						{firstName} {lastName}
+						{name} {surname}
 					</h2>
 					<p className="user-title">Insure Manager | Seaheaven, USA</p>
-					{/* TODO BORDER-BOTTOM */}
 					<hr />
 				</div>
 				<div className="stats">

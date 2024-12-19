@@ -37,3 +37,26 @@
 .new-experience-form button:hover {
 	background-color: #005582;
 }
+.saved {
+	margin-top: 0.7rem;
+	padding: 1rem;
+}
+.section1 {
+	padding: 1rem;
+}
+
+.section2 {
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+
+hr {height: 1px;
+border: none;
+background-color: #000;}
+
+.user-title {
+	padding-bottom: 1rem;
+}
+.stats {
+	padding-left: 2rem;
+}
