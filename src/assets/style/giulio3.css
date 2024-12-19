@@ -52,11 +52,31 @@
 
 hr {height: 1px;
 border: none;
-background-color: #000;}
+background-color: #0000005b;}
 
 .user-title {
 	padding-bottom: 1rem;
 }
 .stats {
 	padding-left: 2rem;
+}
+.scopri {
+	margin-top: 2rem;
+}
+.fa-sort-down {
+	margin-bottom: 5px;
+}
+.titlejob {
+	margin-left: 3rem;
+	margin-bottom: 1rem;
+	margin-top: 1rem;
+}
+.profile-card {
+	margin-top: 9rem;
+	
+}
+.new-experience-form {padding: 3rem;
+margin-left: 4;}
+.new-post-form {
+	box-shadow: ;
 }

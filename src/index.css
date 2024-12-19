@@ -65,6 +65,7 @@ a:visited {
 .main-navbar {
 	height: var(--navbar-height);
 	background-color: #fff;
+
 }
 
 .main {
@@ -487,13 +488,15 @@ a:visited {
 .ads-card--1 {
 	padding: 1rem;
 	background-color: #fff;
-	border: 1px solid grey;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	overflow: hidden;
 	display: flex;
 	flex-direction: column;
 	border-radius: var(--border-radius);
 }
 .ads-card {
-	box-shadow: #000 0px 0px 2px 0px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	overflow: hidden;
 }
 
 .ads-card > h2 {
@@ -524,10 +527,12 @@ a:visited {
 	text-align: center;
 	font-size: 1.2rem;
 	margin-top: 1rem;
+	border-radius: 10px;
 }
 
 .footer-links {
 	display: flex;
+	border-radius: 10px;
 	flex-direction: column;
 	gap: 0.2rem;
 }
