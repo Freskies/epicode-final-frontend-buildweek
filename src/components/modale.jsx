@@ -1,9 +1,9 @@
 import "../assets/style/modale.css";
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { setProfile } from "./../redux/action/profile";
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect, useCallback } from "react";
 import { fetchProfileIfNotExist } from "./../fetchFunctions";
+import { STRIVE_STUDENT_API_KEY } from "../api_key";
 
 function Modal({ onClose, onPostSubmit }) {
 	const {
@@ -25,9 +25,6 @@ function Modal({ onClose, onPostSubmit }) {
 	});
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(null);
-
-	const STRIVE_STUDENT_API_KEY =
-		"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzVmZWM1ODBlYTI4NjAwMTUyOGI5MzQiLCJpYXQiOjE3MzQzMzk2NzMsImV4cCI6MTczNTU0OTI3M30.cJn22VGMuyvv9kcjRR5HjVco2gh8W9bucPNn2jYypkM";
 
 	const handleSubmit = async e => {
 		e.preventDefault();

@@ -32,6 +32,7 @@ export const fetchProfileIfNotExist = async (
 		console.log(profile);
 	} catch (error) {
 		console.error("Si è verificato un errore:", error);
+		throw error;
 	} finally {
 		if (log) console.log("finish fetch");
 	}
