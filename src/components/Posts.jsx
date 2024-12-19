@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { STRIVE_STUDENT_API_KEY } from "./../api_key";
 import Post from "./Post";
+import Loading from "./Loading";
 
 const Posts = () => {
 	const [posts, setPosts] = useState([]);
@@ -40,7 +41,7 @@ const Posts = () => {
 
 	if (error) return "Error";
 
-	if (loading) return "Loading...";
+	if (loading) return <Loading />;
 
 	return (
 		<section className="posts">

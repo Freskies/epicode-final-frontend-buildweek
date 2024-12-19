@@ -1,31 +1,31 @@
 import { useState } from "react";
-import profilepic from "../assets/empi.jpeg";
-import Modal from "./modale";
+import PostModal from "./PostModal";
+import { useSelector } from "react-redux";
 
 function NewPostForm() {
 	const [isModalOpen, setIsModalOpen] = useState(false);
-
-	const openModal = () => {
-		setIsModalOpen(true);
-	};
-
-	const closeModal = () => {
-		setIsModalOpen(false);
-	};
+	const openModal = () => setIsModalOpen(true);
+	const closeModal = () => setIsModalOpen(false);
 
 	const handlePostSubmit = data => {
 		console.log("Post inviato:", data);
-
 		closeModal();
 	};
+
+	const {
+		name: firstName,
+		surname: lastName,
+		email,
+		image: profileImage,
+	} = useSelector(({ profile }) => profile);
 
 	return (
 		<div className="new-post-form">
 			<header className="new-post-header">
 				<img
 					className="new-post-profile-image"
-					src={profilepic}
-					alt="profile-img"
+					src={profileImage}
+					alt="profile"
 				/>
 				<button className="btn-create-post" onClick={openModal}>
 					Crea un Post
@@ -53,7 +53,7 @@ function NewPostForm() {
 				</div>
 
 				{isModalOpen && (
-					<Modal onClose={closeModal} onPostSubmit={handlePostSubmit} />
+					<PostModal onClose={closeModal} onPostSubmit={handlePostSubmit} />
 				)}
 			</div>
 		</div>

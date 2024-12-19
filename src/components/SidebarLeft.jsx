@@ -1,16 +1,23 @@
-import profilepic from "../assets/pics/profilepic.jpeg";
+import { useSelector } from "react-redux";
 import cover from "../assets/pics/cover.jpg";
-import { Link } from "react-router-dom";
-import "../assets/style/giulio2.css";
+
 const SidebarLeft = () => {
+	const {
+		name: firstName,
+		surname: lastName,
+		image: profileImage,
+	} = useSelector(({ profile }) => profile);
+
 	return (
 		<aside className="profile">
 			<figure className="aside-left-card aside-left-card--profile">
 				<img className="cover" src={cover} alt="cover" />
-				<img className="pic-profile" src={profilepic} alt="Profile" />
+				<img className="pic-profile" src={profileImage} alt="Profile" />
 
 				<div className="user-info">
-					<h2 className="user-name">Truman Burbank</h2>
+					<h2 className="user-name">
+						{firstName} {lastName}
+					</h2>
 					<p className="user-title">Insure Manager | Seaheaven, USA</p>
 					{/* TODO BORDER-BOTTOM */}
 					<hr />
@@ -22,39 +29,32 @@ const SidebarLeft = () => {
 					<p>500+</p>
 				</div>
 				<hr />
-				<div className="profile-link">
-					{/* TODO with box shadow or border */}
+				<div className="profile-links">
 					<p className="stat-label">
-						Trova lavoro più velocemente con Premium
+						<span>Trova lavoro più velocemente con Premium</span>
 						<i className="fa-solid fa-star"></i>
 					</p>
-					<div className="provaper">
-						<a href="#">
-							<p>
-								{" "}
-								<i className="fa-brands fa-linkedin"></i> Prova per 0 EUR
-							</p>
-						</a>
-					</div>
+					<a href="#">
+						<i className="fa-brands fa-linkedin"></i>
+						<span>Prova per 0 EUR</span>
+					</a>
 					<hr />
-					{/* TODO with box shadow or border */}
-					<p className="paragraph">
+					<a href="#">
 						<i className="fa-solid fa-bookmark"></i>
-						<a href="#"> Elementi salvati </a>
-					</p>
+						<span>Elementi salvati</span>
+					</a>
 				</div>
 			</figure>
 			<figure className="aside-left-card aside-left-card--events">
 				<div className="linkcard">
-					<div className="gruppieventi">
+					<div className="groups-events-containter">
 						<a href="#">Gruppi</a>
 					</div>
-					<div className="gruppieventi">
+					<div className="groups-events-containter">
 						<a id="eventi" href="#">
 							Eventi
 						</a>
 						<a href="#">
-							{" "}
 							<i className="fa-solid fa-plus plusicon"></i>
 						</a>
 					</div>
