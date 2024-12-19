@@ -1,6 +1,5 @@
 import { useSelector } from "react-redux";
 import cover from "../assets/pics/cover.jpg";
-import "../assets/style/giulio2.css";
 
 const SidebarLeft = () => {
 	const {

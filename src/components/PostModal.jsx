@@ -1,4 +1,3 @@
-import "../assets/style/modale.css";
 import { useState, useEffect, useCallback } from "react";
 import { setProfile } from "./../redux/action/profile";
 import { useSelector, useDispatch } from "react-redux";

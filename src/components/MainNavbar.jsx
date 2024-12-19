@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
-import profilepic from "./../assets/pics/profilepic.jpeg";
+import { useSelector } from "react-redux";
 
 function MainNavbar() {
+	const { image: profileImage } = useSelector(({ profile }) => profile);
+
 	return (
 		<nav className="main-navbar">
 			<div className="logo-search-wrapper">
@@ -58,7 +60,7 @@ function MainNavbar() {
 				<li>
 					<Link to="/Profile" className="navbar-link to-settings">
 						<img
-							src={profilepic}
+							src={profileImage}
 							alt="foto profilo"
 							className="profile-photo"
 						/>

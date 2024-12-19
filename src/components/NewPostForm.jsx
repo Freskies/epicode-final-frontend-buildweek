@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Modal from "./modale";
+import PostModal from "./PostModal";
 import { useSelector } from "react-redux";
 
 function NewPostForm() {
@@ -53,7 +53,7 @@ function NewPostForm() {
 				</div>
 
 				{isModalOpen && (
-					<Modal onClose={closeModal} onPostSubmit={handlePostSubmit} />
+					<PostModal onClose={closeModal} onPostSubmit={handlePostSubmit} />
 				)}
 			</div>
 		</div>
