@@ -3,6 +3,7 @@ import { setProfile } from "./../redux/action/profile";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchProfileIfNotExist } from "./../fetchFunctions";
 import { STRIVE_STUDENT_API_KEY } from "../api_key";
+import "../assets/various-css/gabriele.css";
 
 function Modal({ onClose, onPostSubmit }) {
 	const {
@@ -21,6 +22,7 @@ function Modal({ onClose, onPostSubmit }) {
 
 	const [form, setForm] = useState({
 		text: "",
+		imageUrl: "",
 	});
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(null);
@@ -39,7 +41,10 @@ function Modal({ onClose, onPostSubmit }) {
 						Authorization: STRIVE_STUDENT_API_KEY,
 						"Content-Type": "application/json",
 					},
-					body: JSON.stringify({ text: form.text }),
+					body: JSON.stringify({
+						text: form.text,
+						image: form.imageUrl,
+					}),
 				},
 			);
 
@@ -50,7 +55,6 @@ function Modal({ onClose, onPostSubmit }) {
 			const data = await response.json();
 
 			onPostSubmit(data);
-
 			onClose();
 		} catch (err) {
 			console.error("Errore:", err.message);
@@ -59,6 +63,7 @@ function Modal({ onClose, onPostSubmit }) {
 			setLoading(false);
 		}
 	};
+
 	useEffect(() => {
 		fetchProfileIfNotExist(profileId, setterProfile);
 	}, [profileId, setterProfile]);
@@ -91,6 +96,16 @@ function Modal({ onClose, onPostSubmit }) {
 							setForm({ ...form, text: val });
 						}}
 					/>
+					<input
+						type="text"
+						placeholder="Inserisci l'URL di un'immagine..."
+						className="input-image-url"
+						value={form.imageUrl}
+						onChange={e => {
+							const val = e.target.value;
+							setForm({ ...form, imageUrl: val });
+						}}
+					/>
 					{error && <p className="error-message">{error}</p>}
 					<div className="modal-buttons">
 						<button
@@ -106,7 +121,7 @@ function Modal({ onClose, onPostSubmit }) {
 						<button
 							className="button-modale-post"
 							type="submit"
-							disabled={loading || !form.text.trim()}
+							disabled={loading || !form.text.trim() || !form.imageUrl.trim()}
 						>
 							{loading ? "Caricamento..." : "Pubblica"}
 						</button>
