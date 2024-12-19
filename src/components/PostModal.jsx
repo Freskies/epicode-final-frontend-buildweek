@@ -1,134 +1,96 @@
-import { useState, useEffect, useCallback } from "react";
-import { setProfile } from "./../redux/action/profile";
-import { useSelector, useDispatch } from "react-redux";
-import { fetchProfileIfNotExist } from "./../fetchFunctions";
-import { STRIVE_STUDENT_API_KEY } from "../api_key";
+import { useCallback, useState } from "react";
+import PropTypes from "prop-types";
+import { useDispatch, useSelector } from "react-redux";
 import "../assets/various-css/gabriele.css";
+import { addPost, getPosts } from "./../fetchFunctions";
+import { setPosts } from "../redux/action/posts";
 
-function Modal({ onClose, onPostSubmit }) {
-	const {
-		_id: profileId,
-		name: firstName,
-		surname: lastName,
-		email,
-		image: profileImage,
-	} = useSelector(({ profile }) => profile);
+Modal.propTypes = {
+	onClose: PropTypes.func.isRequired,
+};
 
-	const dispatch = useDispatch();
-	const setterProfile = useCallback(
-		profile => dispatch(setProfile(profile)),
-		[dispatch],
-	);
+function Modal({ onClose }) {
+	const [loading, setLoading] = useState(false);
+
+	// FROM HANDLING
 
 	const [form, setForm] = useState({
 		text: "",
 		imageUrl: "",
 	});
-	const [loading, setLoading] = useState(false);
-	const [error, setError] = useState(null);
+
+	const {
+		name: firstName,
+		surname: lastName,
+		image: profileImage,
+	} = useSelector(({ profile }) => profile);
+
+	// SUBMIT
+
+	const dispatch = useDispatch();
+	const setterPosts = useCallback(
+		posts => dispatch(setPosts(posts)),
+		[dispatch],
+	);
 
 	const handleSubmit = async e => {
 		e.preventDefault();
 		setLoading(true);
-		setError(null);
-
-		try {
-			const response = await fetch(
-				`https://striveschool-api.herokuapp.com/api/posts/`,
-				{
-					method: "POST",
-					headers: {
-						Authorization: STRIVE_STUDENT_API_KEY,
-						"Content-Type": "application/json",
-					},
-					body: JSON.stringify({
-						text: form.text,
-						image: form.imageUrl,
-					}),
-				},
-			);
-
-			if (!response.ok) {
-				throw new Error("Errore durante l'invio del post");
-			}
-
-			const data = await response.json();
-
-			onPostSubmit(data);
-			onClose();
-		} catch (err) {
-			console.error("Errore:", err.message);
-			setError(err.message);
-		} finally {
-			setLoading(false);
-		}
+		await addPost(form);
+		setLoading(false);
+		onClose();
+		getPosts(setterPosts);
 	};
 
-	useEffect(() => {
-		fetchProfileIfNotExist(profileId, setterProfile);
-	}, [profileId, setterProfile]);
-
 	return (
-		<div className="modal-position">
+		<dialog className="modal-position">
 			<div className="modal-bg">
-				<div className="identity-modale">
+				<header className="new-post-header">
 					<img
 						src={profileImage}
-						alt="profile-img"
+						alt={`${firstName} ${lastName}`}
 						className="new-post-profile-image"
 					/>
-					<div className="modale-name">
-						<h2>
-							{firstName}
-							{lastName}
-						</h2>
-					</div>
-				</div>
+					<p className="new-post-profile-name">
+						{firstName} {lastName}
+					</p>
+				</header>
 
 				<form onSubmit={handleSubmit}>
 					<textarea
 						id="post"
 						placeholder="Scrivi qualcosa di interessante...."
-						className="placeholder-modale"
+						className="new-post-text"
 						value={form.text}
-						onChange={e => {
-							const val = e.target.value;
-							setForm({ ...form, text: val });
-						}}
+						onChange={e => setForm({ ...form, text: e.target.value })}
 					/>
 					<input
 						type="text"
 						placeholder="Inserisci l'URL di un'immagine..."
 						className="input-image-url"
 						value={form.imageUrl}
-						onChange={e => {
-							const val = e.target.value;
-							setForm({ ...form, imageUrl: val });
-						}}
+						onChange={e => setForm({ ...form, imageUrl: e.target.value })}
 					/>
-					{error && <p className="error-message">{error}</p>}
-					<div className="modal-buttons">
-						<button
-							className="button-modale-close"
-							type="button"
-							onClick={onClose}
-							disabled={loading}
-						>
-							Chiudi
-						</button>
-					</div>
-					<div className="modal-buttons2">
-						<button
-							className="button-modale-post"
-							type="submit"
-							disabled={loading || !form.text.trim() || !form.imageUrl.trim()}
-						>
-							{loading ? "Caricamento..." : "Pubblica"}
-						</button>
-					</div>
+					<button
+						className="button-modale-post"
+						// disabled={loading || !form.text.trim() || !form.imageUrl.trim()}
+						type="submit"
+					>
+						{loading ? "Caricamento..." : "Pubblica"}
+					</button>
 				</form>
+				<div className="modal-buttons">
+					<button
+						className="button-modale-close"
+						type="button"
+						onClick={onClose}
+						disabled={loading}
+					>
+						Chiudi
+					</button>
+				</div>
 			</div>
-		</div>
+		</dialog>
 	);
 }
 
