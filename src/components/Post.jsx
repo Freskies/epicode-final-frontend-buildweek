@@ -1,13 +1,26 @@
-import emptyIcon from "../assets/empi.jpeg";
+import { useState } from "react";
 
-function Post({ post: { username, updatedAt, text, image } }) {
+function Post({
+	post: {
+		username,
+		updatedAt,
+		text,
+		image,
+		user: { image: profileImage, name: profileName, surname: profileSurname },
+	},
+}) {
+	const [likeCount, setLikeCount] = useState(0);
+
+	const like = () => {
+		setLikeCount(prevCount => prevCount + 1);
+	};
 	return (
 		<article className="post">
 			<header className="post-header">
 				<img
 					className="post-profile-image"
-					src={emptyIcon}
-					alt="image non found"
+					src={profileImage}
+					alt={`${profileName} ${profileSurname} `}
 				/>
 				<div>
 					<h3 className="author">
@@ -28,9 +41,13 @@ function Post({ post: { username, updatedAt, text, image } }) {
 
 			{/* TODO make a border bottom or a box shadow */}
 			<footer className="post-footer">
-				<div className="action-wrapper">
+				<div
+					className="action-wrapper"
+					onClick={like}
+					style={{ cursor: "pointer" }}
+				>
 					<i className="fa-regular fa-thumbs-up"></i>
-					<p>Consiglia</p>
+					<p>Consiglia {likeCount > 0 && <span>({likeCount})</span>}</p>
 				</div>
 				<div className="action-wrapper">
 					<i className="fa-regular fa-comment"></i>

@@ -1,8 +1,49 @@
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useState } from "react";
+import { STRIVE_STUDENT_API_KEY } from "./../api_key";
 
 function MainNavbar() {
 	const { image: profileImage } = useSelector(({ profile }) => profile);
+	const [searchQuery, setSearchQuery] = useState("");
+	const [searchResults, setSearchResults] = useState([]);
+	const [isLoading, setIsLoading] = useState(false);
+	const [error, setError] = useState(null);
+
+	const handleSearch = async e => {
+		e.preventDefault();
+		if (!searchQuery.trim()) return;
+
+		setIsLoading(true);
+		setError(null);
+
+		try {
+			const response = await fetch(
+				`https://striveschool-api.herokuapp.com/api/profile?search=${encodeURIComponent(
+					searchQuery,
+				)}`,
+				{
+					method: "GET",
+					headers: {
+						Authorization: STRIVE_STUDENT_API_KEY,
+					},
+				},
+			);
+
+			if (!response.ok) {
+				throw new Error(
+					`Errore ${response.status}: Impossibile completare la ricerca.`,
+				);
+			}
+
+			const data = await response.json();
+			setSearchResults(data);
+		} catch (err) {
+			setError(err.message);
+		} finally {
+			setIsLoading(false);
+		}
+	};
 
 	return (
 		<nav className="main-navbar">
@@ -15,15 +56,34 @@ function MainNavbar() {
 					/>
 				</Link>
 				<div className="search-wrapper">
-					<i className="fas fa-search"></i>
-					<input
-						className="search-input"
-						type="search"
-						placeholder="Cerca compagni"
-					/>
+					<form onSubmit={handleSearch}>
+						<i className="fas fa-search"></i>
+						<input
+							className="search-input"
+							type="search"
+							placeholder="Cerca compagni"
+							value={searchQuery}
+							onChange={e => setSearchQuery(e.target.value)}
+						/>
+					</form>
 				</div>
 			</div>
-
+			{isLoading && <p>Caricamento...</p>}
+			{error && <p className="error">{error}</p>}
+			{searchResults.length > 0 && (
+				<div className="search-results">
+					<ul>
+						{searchResults.map(profile => (
+							<li key={profile._id}>
+								<Link to={`/profile/${profile._id}`}>
+									<img src={profile.image} alt={profile.name} />
+									<p>{profile.name}</p>
+								</Link>
+							</li>
+						))}
+					</ul>
+				</div>
+			)}
 			<ul className="navbar-links">
 				<li>
 					<Link to="/Home" className="navbar-link to-home">
@@ -39,18 +99,16 @@ function MainNavbar() {
 				</li>
 				<li>
 					<Link to="/Home" className="navbar-link to-home">
-						<i className="fa-solid fa-briefcase main-nav-icon "></i>
+						<i className="fa-solid fa-briefcase main-nav-icon"></i>
 						<p>Lavoro</p>
 					</Link>
 				</li>
-
 				<li>
 					<Link to="/Home" className="navbar-link to-home">
 						<i className="fa-solid fa-comment-dots main-nav-icon"></i>
-						<p>Messaggistica</p>
+						<p>Chat</p>
 					</Link>
 				</li>
-
 				<li>
 					<Link to="/Home" className="navbar-link to-home">
 						<i className="fa-solid fa-bell main-nav-icon"></i>
@@ -64,7 +122,6 @@ function MainNavbar() {
 							alt="foto profilo"
 							className="profile-photo"
 						/>
-
 						<div className="profile-dropdown-wrapper">
 							<p>Tu</p>
 							<i className="fas fa-sort-down"></i>

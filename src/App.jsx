@@ -11,7 +11,6 @@ import Loading from "./components/Loading";
 function App() {
 	// FETCH PROFILE IF NOT IN REDUX STORE
 	const [error, setError] = useState(false);
-
 	const { _id: profileId } = useSelector(({ profile }) => profile);
 
 	const dispatch = useDispatch();

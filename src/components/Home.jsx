@@ -2,7 +2,6 @@ import SidebarLeft from "./SidebarLeft";
 import NewPostForm from "./NewPostForm";
 import Posts from "./Posts";
 import SidebarRight from "./SidebarRight";
-import DropdownFilter from "./DropdownFilter";
 
 const Home = () => {
 	return (

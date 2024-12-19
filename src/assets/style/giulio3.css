@@ -1,4 +1,4 @@
-.exp-form {
+.new-experience-form {
 	display: flex;
 	flex-direction: column;
 	gap: 2rem;
@@ -9,9 +9,8 @@
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-
-.exp-form input,
-.exp-form textarea {
+.new-experience-form input,
+.new-experience-form textarea {
 	font-size: 18px;
 	padding: 10px;
 	border: 1px solid #ccc;
@@ -19,12 +18,12 @@
 	width: 100%;
 }
 
-.exp-form textarea {
+.new-experience-form textarea {
 	resize: none;
 	height: 100px;
 }
 
-.exp-form button {
+.new-experience-form button {
 	font-size: 18px;
 	padding: 10px 20px;
 	color: #fff;
@@ -35,11 +34,29 @@
 	transition: background-color 0.3s ease;
 }
 
-.exp-form button:hover {
+.new-experience-form button:hover {
 	background-color: #005582;
 }
-.exp1{margin-left: 2rem;
-margin-top: 1rem;}
-.exp2 {margin-left: 2rem;
-margin-top: 1rem;
-margin-bottom: 1rem;}
+.saved {
+	margin-top: 0.7rem;
+	padding: 1rem;
+}
+.section1 {
+	padding: 1rem;
+}
+
+.section2 {
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+
+hr {height: 1px;
+border: none;
+background-color: #000;}
+
+.user-title {
+	padding-bottom: 1rem;
+}
+.stats {
+	padding-left: 2rem;
+}
