@@ -1,47 +1,49 @@
-import { Link } from "react-router-dom"
-import { useSelector } from "react-redux"
-import { useState } from "react"
-
-const STRIVE_STUDENT_API_KEY =
-	"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzVmZWM1ODBlYTI4NjAwMTUyOGI5MzQiLCJpYXQiOjE3MzQzMzk2NzMsImV4cCI6MTczNTU0OTI3M30.cJn22VGMuyvv9kcjRR5HjVco2gh8W9bucPNn2jYypkM"
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useState } from "react";
+import { STRIVE_STUDENT_API_KEY } from "./../api_key";
 
 function MainNavbar() {
-	const { image: profileImage } = useSelector(({ profile }) => profile)
-	const [searchQuery, setSearchQuery] = useState("")
-	const [searchResults, setSearchResults] = useState([])
-	const [isLoading, setIsLoading] = useState(false)
-	const [error, setError] = useState(null)
+	const { image: profileImage } = useSelector(({ profile }) => profile);
+	const [searchQuery, setSearchQuery] = useState("");
+	const [searchResults, setSearchResults] = useState([]);
+	const [isLoading, setIsLoading] = useState(false);
+	const [error, setError] = useState(null);
 
-	const handleSearch = async (e) => {
-		e.preventDefault()
-		if (!searchQuery.trim()) return
+	const handleSearch = async e => {
+		e.preventDefault();
+		if (!searchQuery.trim()) return;
 
-		setIsLoading(true)
-		setError(null)
+		setIsLoading(true);
+		setError(null);
 
 		try {
 			const response = await fetch(
-				`https://striveschool-api.herokuapp.com/api/profile?search=${encodeURIComponent(searchQuery)}`,
+				`https://striveschool-api.herokuapp.com/api/profile?search=${encodeURIComponent(
+					searchQuery,
+				)}`,
 				{
 					method: "GET",
 					headers: {
-						Authorization: STRIVE_STUDENT_API_KEY
-					}
-				}
-			)
+						Authorization: STRIVE_STUDENT_API_KEY,
+					},
+				},
+			);
 
 			if (!response.ok) {
-				throw new Error(`Errore ${response.status}: Impossibile completare la ricerca.`)
+				throw new Error(
+					`Errore ${response.status}: Impossibile completare la ricerca.`,
+				);
 			}
 
-			const data = await response.json()
-			setSearchResults(data)
+			const data = await response.json();
+			setSearchResults(data);
 		} catch (err) {
-			setError(err.message)
+			setError(err.message);
 		} finally {
-			setIsLoading(false)
+			setIsLoading(false);
 		}
-	}
+	};
 
 	return (
 		<nav className="main-navbar">
@@ -61,7 +63,7 @@ function MainNavbar() {
 							type="search"
 							placeholder="Cerca compagni"
 							value={searchQuery}
-							onChange={(e) => setSearchQuery(e.target.value)}
+							onChange={e => setSearchQuery(e.target.value)}
 						/>
 					</form>
 				</div>
@@ -71,7 +73,7 @@ function MainNavbar() {
 			{searchResults.length > 0 && (
 				<div className="search-results">
 					<ul>
-						{searchResults.map((profile) => (
+						{searchResults.map(profile => (
 							<li key={profile._id}>
 								<Link to={`/profile/${profile._id}`}>
 									<img src={profile.image} alt={profile.name} />
@@ -115,7 +117,11 @@ function MainNavbar() {
 				</li>
 				<li>
 					<Link to="/Profile" className="navbar-link to-settings">
-						<img src={profileImage} alt="foto profilo" className="profile-photo" />
+						<img
+							src={profileImage}
+							alt="foto profilo"
+							className="profile-photo"
+						/>
 						<div className="profile-dropdown-wrapper">
 							<p>Tu</p>
 							<i className="fas fa-sort-down"></i>
@@ -137,7 +143,7 @@ function MainNavbar() {
 				</ul>
 			</div>
 		</nav>
-	)
+	);
 }
 
-export default MainNavbar
+export default MainNavbar;
