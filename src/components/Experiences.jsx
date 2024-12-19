@@ -1,6 +1,10 @@
 import { useState, useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addExperience, getExperiences } from "./../fetchFunctions";
+import {
+	addExperience,
+	getExperiences,
+	deleteExperience,
+} from "./../fetchFunctions";
 import { setExperiences } from "./../redux/action/experiences";
 import Experience from "./Experience";
 
@@ -8,12 +12,7 @@ const Experiences = () => {
 	const { _id: profileId } = useSelector(({ profile }) => profile);
 	const experiences = useSelector(({ experiences }) => experiences);
 
-	const dispatch = useDispatch();
-	const setterExperiences = useCallback(
-		experiences => dispatch(setExperiences(experiences)),
-		[dispatch],
-	);
-
+	// FORM STATE
 	const [newExperience, setNewExperience] = useState({
 		role: "",
 		company: "",
@@ -23,17 +22,32 @@ const Experiences = () => {
 		area: "",
 	});
 
-	// Aggiungi una nuova esperienza
-	const handleAddExperience = async e => {
-		e.preventDefault();
-		addExperience(profileId, newExperience);
-		getExperiences(profileId, setterExperiences);
-	};
-
-	// Gestisci cambiamenti nei campi del modulo
 	const handleInputChange = e => {
 		const { name, value } = e.target;
 		setNewExperience(prev => ({ ...prev, [name]: value }));
+	};
+
+	// REDUX ACTIONS
+
+	const dispatch = useDispatch();
+	const setterExperiences = useCallback(
+		experiences => dispatch(setExperiences(experiences)),
+		[dispatch],
+	);
+
+	const handleAddExperience = async e => {
+		e.preventDefault();
+		await addExperience(profileId, newExperience);
+		await getExperiences(profileId, setterExperiences);
+	};
+
+	const handleDelete = async e => {
+		e.preventDefault();
+		const experienceId = e.target.dataset.experienceId;
+		console.log(e.target.dataset);
+		if (!experienceId) return;
+		await deleteExperience(profileId, experienceId);
+		await getExperiences(profileId, setterExperiences);
 	};
 
 	useEffect(() => {
@@ -43,7 +57,7 @@ const Experiences = () => {
 	return (
 		<div className="experiences">
 			<h3>Esperienze</h3>
-			<ul className="experience-list">
+			<ul className="experience-list" onClick={handleDelete}>
 				{experiences.map(experience => (
 					<Experience key={experience._id} experience={experience} />
 				))}

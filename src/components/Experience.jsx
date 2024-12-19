@@ -1,30 +1,32 @@
-import { useDispatch, useSelector } from "react-redux";
-import { deleteExperience } from "../fetchFunctions";
+import PropTypes from "prop-types";
+
+Experience.propTypes = {
+	experience: PropTypes.shape({
+		_id: PropTypes.string.isRequired,
+		role: PropTypes.string.isRequired,
+		company: PropTypes.string.isRequired,
+		startDate: PropTypes.string.isRequired,
+		endDate: PropTypes.string,
+		description: PropTypes.string.isRequired,
+		area: PropTypes.string.isRequired,
+	}).isRequired,
+};
 
 function Experience({
 	experience: { _id: id, role, company, startDate, endDate, description, area },
 }) {
-	const { _id: profileId } = useSelector(({ profile }) => profile);
-	const dispatch = useDispatch();
-
 	return (
 		<li className="experience-item">
 			<p>
 				{role} at {company}
 			</p>
 			<p>
-				{startDate} - {endDate || "Present"}
+				{startDate} &mdash; {endDate || "Present"}
 			</p>
 			<p>{description}</p>
 			<p>{area}</p>
 
-			<button
-				onClick={() => {
-					deleteExperience(profileId, id);
-				}}
-			>
-				Elimina
-			</button>
+			<button data-experience-id={id}>Elimina</button>
 		</li>
 	);
 }
