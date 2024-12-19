@@ -24,11 +24,15 @@ function NewPostForm() {
 			<header className="new-post-header">
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 				<img
 					className="new-post-profile-image"
 					src={profileImage}
 					alt="profile"
 				/>
+=======
+				<img className="post-profile-image" src={profileImage} alt="profile" />
+>>>>>>> Stashed changes
 =======
 				<img className="post-profile-image" src={profileImage} alt="profile" />
 >>>>>>> Stashed changes
