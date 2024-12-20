@@ -4,6 +4,7 @@ import Posts from "./Posts";
 import SidebarRight from "./SidebarRight";
 
 const Home = () => {
+	return <SidebarRight />;
 	return (
 		<div className="main">
 			<section className="left">

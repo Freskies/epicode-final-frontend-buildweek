@@ -29,34 +29,33 @@ export const fetchProfileIfNotExist = async (profileId, setterFn) => {
 	}
 };
 
+
+
 // OTHER PROFILES
 
-// other profiles boilerplate
-// Profiles
-// useEffect(() => {
-// 	(async () => {
-// 		try {
-// 			const response = await fetch("https://striveschool-api.herokuapp.com/api/profile/", {
-// 				method: "GET",
-// 				headers: {
-// 					Authorization: STRIVE_STUDENT_API_KEY,
-// 					"Content-Type": "application/json",
-// 				},
-// 			});
-
-// 			if (!response.ok) {
-// 				throw new Error(`HTTP error! status: ${response.status}`);
-// 			}
-
-// 			const profiles = await response.json();
-
-// 			console.log(profiles);
-// 		} catch (error) {
-// 			console.error("Si è verificato un errore:", error);
-// 		}
-// 	})();
-// }, []);
-
+export const getOtherProfiles = async (setterFn) => {
+	try {
+	  const response = await fetch(
+		"https://striveschool-api.herokuapp.com/api/profile/",
+		{
+		  method: "GET",
+		  headers: {
+			Authorization: STRIVE_STUDENT_API_KEY,  
+			"Content-Type": "application/json",
+		  },
+		}
+	  )
+  
+	  if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`)
+  
+	  const profiles = await response.json()
+	  setterFn(profiles)  
+	} catch (error) {
+	  console.error("Errore nella fetch:", error)
+	  throw error
+	}
+  }
+  
 // EXPERIENCES
 
 export const getExperiences = async (profileId, setterFn) => {
