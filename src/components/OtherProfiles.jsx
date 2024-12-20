@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getOtherProfiles } from "../fetchFunctions";
 import { setOtherProfiles } from "../redux/action/other-profiles";
 import Loading from "./Loading";
-
+import "../assets/style/giulio3.css"
 const OtherProfiles = () => {
 
 	const [error, setError] = useState(false);
@@ -31,13 +31,13 @@ const OtherProfiles = () => {
 			<aside className="other-profiles">
 				<h2>Other Profiles</h2>
 
-				<ul>
+				<ul className="others-ul">
 					{otherProfiles.slice(0,18).map(profile => {
 						console.log(profile);
 						return (
 							<li key={profile._id} className="profile-item">
 								<img
-									src={profile.avatar}
+									src={profile.image}
 									alt={`${profile.name}'s avatar`}
 									className="profile-avatar"
 								/>

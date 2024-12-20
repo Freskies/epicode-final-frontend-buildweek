@@ -2,7 +2,8 @@ import { useSelector } from "react-redux";
 import cover from "../assets/pics/cover.jpg";
 import Experiences from "./Experiences";
 import "../assets/style/giulio3.css";
-import OtherProfiles from "./OtherProfiles"
+import OtherProfiles from "./OtherProfiles";
+import UnderProfile from "./UnderProfile";
 
 const Profile = () => {
 	const {
@@ -28,6 +29,9 @@ const Profile = () => {
 						<Experiences />
 					</div>
 				</figure>
+				<section className="under">
+					<UnderProfile />
+				</section>
 			</section>
 			<aside className="other-profiles">
 				<OtherProfiles />
