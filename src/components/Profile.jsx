@@ -2,9 +2,9 @@ import { useSelector } from "react-redux";
 import cover from "../assets/pics/cover.jpg";
 import Experiences from "./Experiences";
 import "../assets/style/giulio3.css";
+import OtherProfiles from "./OtherProfiles"
 
 const Profile = () => {
-	// your profile
 	const {
 		name: firstName,
 		surname: lastName,
@@ -29,7 +29,9 @@ const Profile = () => {
 					</div>
 				</figure>
 			</section>
-			<aside className="other-profiles"></aside>
+			<aside className="other-profiles">
+				<OtherProfiles />
+			</aside>
 		</main>
 	);
 };
