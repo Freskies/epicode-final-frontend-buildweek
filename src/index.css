@@ -375,17 +375,17 @@ a:visited {
 	margin-left: 1rem;
 }
 
-.modal-position {
+.post-modal {
 	position: absolute;
 	inset: 0;
 	margin: auto;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-}
 
-.modal-position::backdrop {
-	background-color: rgba(0, 0, 0, 0.5);
+	&::backdrop {
+		background-color: rgba(0, 0, 0, 0.5);
+	}
 }
 
 /* DROPDOWN FILTER */
