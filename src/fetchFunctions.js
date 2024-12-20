@@ -29,33 +29,31 @@ export const fetchProfileIfNotExist = async (profileId, setterFn) => {
 	}
 };
 
-
-
 // OTHER PROFILES
 
-export const getOtherProfiles = async (setterFn) => {
+export const getOtherProfiles = async setterFn => {
 	try {
-	  const response = await fetch(
-		"https://striveschool-api.herokuapp.com/api/profile/",
-		{
-		  method: "GET",
-		  headers: {
-			Authorization: STRIVE_STUDENT_API_KEY,  
-			"Content-Type": "application/json",
-		  },
-		}
-	  )
-  
-	  if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`)
-  
-	  const profiles = await response.json()
-	  setterFn(profiles)  
+		const response = await fetch(
+			"https://striveschool-api.herokuapp.com/api/profile/",
+			{
+				method: "GET",
+				headers: {
+					Authorization: STRIVE_STUDENT_API_KEY,
+					"Content-Type": "application/json",
+				},
+			},
+		);
+
+		if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+
+		const profiles = await response.json();
+		setterFn(profiles);
 	} catch (error) {
-	  console.error("Errore nella fetch:", error)
-	  throw error
+		console.error("Errore nella fetch:", error);
+		throw error;
 	}
-  }
-  
+};
+
 // EXPERIENCES
 
 export const getExperiences = async (profileId, setterFn) => {
@@ -144,7 +142,7 @@ export const getPosts = async setterFn => {
 	}
 };
 
-export const addPost = async ({ text, image }) => {
+export const addPost = async ({ text, imageUrl }) => {
 	try {
 		const response = await fetch(
 			`https://striveschool-api.herokuapp.com/api/posts/`,
@@ -154,7 +152,7 @@ export const addPost = async ({ text, image }) => {
 					Authorization: STRIVE_STUDENT_API_KEY,
 					"Content-Type": "application/json",
 				},
-				body: JSON.stringify({ text, image }),
+				body: JSON.stringify({ text, image: imageUrl }),
 			},
 		);
 

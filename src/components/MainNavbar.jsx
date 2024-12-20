@@ -12,7 +12,6 @@ function MainNavbar() {
 	const [error, setError] = useState(null);
 
 	const { pathname } = useLocation();
-	console.log(pathname, pathname === "/Home");
 
 	const handleSearch = async e => {
 		e.preventDefault();

@@ -1,23 +1,43 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
-import "../assets/various-css/gabriele.css";
 import { addPost, getPosts } from "./../fetchFunctions";
 import { setPosts } from "../redux/action/posts";
 
 Modal.propTypes = {
-	onClose: PropTypes.func.isRequired,
+	isModalOpen: PropTypes.bool.isRequired,
+	closeModal: PropTypes.func.isRequired,
 };
 
-function Modal({ onClose }) {
+const formStartingPoint = {
+	text: "",
+	imageUrl: "",
+};
+
+function Modal({ isModalOpen, closeModal }) {
 	const [loading, setLoading] = useState(false);
+	const ref = useRef();
 
-	// FROM HANDLING
+	useEffect(() => {
+		ref.current?.[isModalOpen ? "showModal" : "close"]();
+	}, [isModalOpen]);
 
-	const [form, setForm] = useState({
-		text: "",
-		imageUrl: "",
-	});
+	// click outside close the modal
+	useEffect(() => {
+		const handleClickOutside = e => {
+			if (ref.current && e.target.closest(".dialog-wrapper") === null)
+				closeModal();
+		};
+
+		document.addEventListener("mousedown", handleClickOutside);
+		return () => {
+			document.removeEventListener("mousedown", handleClickOutside);
+		};
+	}, [closeModal]);
+
+	// FORM HANDLING
+
+	const [form, setForm] = useState(formStartingPoint);
 
 	const {
 		name: firstName,
@@ -34,29 +54,46 @@ function Modal({ onClose }) {
 	);
 
 	const handleSubmit = async e => {
-		e.preventDefault();
-		setLoading(true);
-		await addPost(form);
-		setLoading(false);
-		onClose();
-		getPosts(setterPosts);
+		try {
+			e.preventDefault();
+			setLoading(true);
+			await addPost(form);
+			closeModal();
+			setLoading(false);
+			getPosts(setterPosts);
+			setForm(formStartingPoint);
+		} catch (error) {
+			console.error(error);
+		}
 	};
 
+	if (!isModalOpen) return null;
+
 	return (
-		<dialog className="post-modal" id="post-modal">
-			<div className="modal-bg">
+		<dialog className="post-modal" ref={ref} onCancel={closeModal}>
+			<div className="dialog-wrapper">
 				<header className="new-post-header">
-					<img
-						src={profileImage}
-						alt={`${firstName} ${lastName}`}
-						className="new-post-profile-image"
-					/>
-					<p className="new-post-profile-name">
-						{firstName} {lastName}
-					</p>
+					<div className="modal-profile-wrapper">
+						<img
+							src={profileImage}
+							alt={`${firstName} ${lastName}`}
+							className="new-post-profile-image"
+						/>
+						<p className="new-post-profile-name">
+							{firstName} {lastName}
+						</p>
+					</div>
+					<button
+						className="modal_btn modal_btn--close"
+						type="button"
+						onClick={closeModal}
+						disabled={loading}
+					>
+						Chiudi
+					</button>
 				</header>
 
-				<form onSubmit={handleSubmit}>
+				<form className="modal-new-post-form" onSubmit={handleSubmit}>
 					<textarea
 						id="post"
 						placeholder="Scrivi qualcosa di interessante...."
@@ -71,24 +108,10 @@ function Modal({ onClose }) {
 						value={form.imageUrl}
 						onChange={e => setForm({ ...form, imageUrl: e.target.value })}
 					/>
-					<button
-						className="button-modale-post"
-						// disabled={loading || !form.text.trim() || !form.imageUrl.trim()}
-						type="submit"
-					>
-						{loading ? "Caricamento..." : "Pubblica"}
+					<button className="modal_btn modal_btn--post" type="submit">
+						Pubblica
 					</button>
 				</form>
-				<div className="modal-buttons">
-					<button
-						className="button-modale-close"
-						type="button"
-						onClick={onClose}
-						disabled={loading}
-					>
-						Chiudi
-					</button>
-				</div>
 			</div>
 		</dialog>
 	);

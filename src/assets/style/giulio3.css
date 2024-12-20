@@ -6,9 +6,11 @@
 	margin-bottom: 1rem;
 }
 
-hr {height: 1px;
-border: none;
-background-color: #000;}
+hr {
+	height: 1px;
+	border: none;
+	background-color: #000;
+}
 
 .user-title {
 	padding-bottom: 1rem;
