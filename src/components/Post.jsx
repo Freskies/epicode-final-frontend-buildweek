@@ -1,4 +1,19 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
+
+Post.propTypes = {
+	post: PropTypes.shape({
+		username: PropTypes.string,
+		updatedAt: PropTypes.string,
+		text: PropTypes.string,
+		image: PropTypes.string,
+		user: PropTypes.shape({
+			image: PropTypes.string,
+			name: PropTypes.string,
+			surname: PropTypes.string,
+		}),
+	}).isRequired,
+};
 
 function Post({
 	post: {
@@ -28,7 +43,10 @@ function Post({
 					</h3>
 					<p>36.998 follower</p>
 
-					<p>{updatedAt.slice(0, 10) + ' ' + updatedAt.slice(11, 17) || "data non disponibile"}</p>
+					<p>
+						{updatedAt.slice(0, 10) + " " + updatedAt.slice(11, 17) ||
+							"data non disponibile"}
+					</p>
 				</div>
 			</header>
 			<main className="post-body">
