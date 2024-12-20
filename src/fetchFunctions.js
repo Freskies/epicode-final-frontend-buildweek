@@ -139,7 +139,6 @@ export const getPosts = async setterFn => {
 		if (!response.ok) throw new Error("Rejected");
 		const posts = await response.json();
 		setterFn(posts);
-		console.log(posts); // TEMP
 	} catch (error) {
 		console.error("Errore nella fetch:", error);
 		throw error;
