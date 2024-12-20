@@ -487,7 +487,8 @@ a:visited {
 
 .post-image {
 	width: 100%;
-	height: 30rem;
+	max-height: 90rem;
+	object-fit: cover;
 }
 
 .post-footer,
