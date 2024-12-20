@@ -15,18 +15,24 @@ Experience.propTypes = {
 function Experience({
 	experience: { _id: id, role, company, startDate, endDate, description, area },
 }) {
+	const startDateD = new Date(startDate).toLocaleDateString();
+	const endDateD = endDate && new Date(endDate).toLocaleDateString();
+
 	return (
 		<li className="experience-item">
-			<p>
-				{role} at {company}
-			</p>
-			<p>
-				{startDate} &mdash; {endDate || "Present"}
-			</p>
-			<p>{description}</p>
-			<p>{area}</p>
+			<div className="experience-info">
+				<p className="experience-role">
+					<em>{role}</em> at <em>{company}</em> ({area})
+				</p>
 
-			<button data-experience-id={id}>Elimina</button>
+				<p className="experience-description">{description}</p>
+				<p className="experience-dates">
+					{startDateD} &mdash; {endDateD || "Present"}
+				</p>
+			</div>
+			<button className="delete-exp-btn" data-experience-id={id}>
+				<i className="fas fa-trash-alt"></i>
+			</button>
 		</li>
 	);
 }
