@@ -121,7 +121,7 @@ a:visited {
 
 	i {
 		font-size: 3rem;
-		color: #5c5c5c;
+		color: inherit;
 	}
 
 	.fa-sort-down {
@@ -174,7 +174,7 @@ a:visited {
 	text-align: center;
 	margin-top: 3px;
 	font-size: 1.3rem;
-	/* font-weight: 200; */
+	color: #777;
 
 	& > li {
 		width: 8.4rem;
@@ -185,6 +185,16 @@ a:visited {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	padding-bottom: 0.4rem;
+
+	&:hover,
+	&.active-page {
+		color: #000;
+	}
+
+	&.active-page {
+		border-bottom: 3px solid currentColor;
+	}
 }
 
 .main-nav-icon {

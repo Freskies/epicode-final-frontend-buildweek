@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import { STRIVE_STUDENT_API_KEY } from "./../api_key";
+import { useLocation } from "react-router-dom";
 
 function MainNavbar() {
 	const { image: profileImage } = useSelector(({ profile }) => profile);
@@ -9,6 +10,9 @@ function MainNavbar() {
 	const [searchResults, setSearchResults] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
 	const [error, setError] = useState(null);
+
+	const { pathname } = useLocation();
+	console.log(pathname, pathname === "/Home");
 
 	const handleSearch = async e => {
 		e.preventDefault();
@@ -86,37 +90,63 @@ function MainNavbar() {
 			)}
 			<ul className="navbar-links">
 				<li>
-					<Link to="/Home" className="navbar-link to-home">
+					<Link
+						to="/Home"
+						className={`navbar-link to-home ${
+							pathname === "/Home" ? `active-page` : ""
+						}`}
+					>
 						<i className="fas fa-home main-nav-icon"></i>
 						<p>Home</p>
 					</Link>
 				</li>
 				<li>
-					<Link to="/Home" className="navbar-link to-home">
+					<Link
+						className={`navbar-link ${
+							pathname === "/Ciucciamelo" ? `active-page` : ""
+						}`}
+					>
 						<i className="fa-solid fa-people-arrows main-nav-icon"></i>
 						<p>Rete</p>
 					</Link>
 				</li>
 				<li>
-					<Link to="/Home" className="navbar-link to-home">
+					<Link
+						className={`navbar-link ${
+							pathname === "/Jobs" ? ` active-page` : ""
+						}`}
+					>
 						<i className="fa-solid fa-briefcase main-nav-icon"></i>
 						<p>Lavoro</p>
 					</Link>
 				</li>
 				<li>
-					<Link to="/Home" className="navbar-link to-home">
+					<Link
+						className={`navbar-link ${
+							pathname === "/Chat" ? `active-page` : ""
+						}`}
+					>
 						<i className="fa-solid fa-comment-dots main-nav-icon"></i>
 						<p>Chat</p>
 					</Link>
 				</li>
 				<li>
-					<Link to="/Home" className="navbar-link to-home">
+					<Link
+						className={`navbar-link ${
+							pathname === "/Notify" ? `active-page` : ""
+						}`}
+					>
 						<i className="fa-solid fa-bell main-nav-icon"></i>
 						<p>Notifiche</p>
 					</Link>
 				</li>
 				<li>
-					<Link to="/Profile" className="navbar-link to-settings">
+					<Link
+						to="/Profile"
+						className={`navbar-link ${
+							pathname === "/Profile" ? `active-page` : ""
+						}`}
+					>
 						<img
 							src={profileImage}
 							alt="foto profilo"
