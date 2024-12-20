@@ -1,7 +1,7 @@
 import { useState } from "react";
 import PostModal from "./PostModal";
 import { useSelector } from "react-redux";
-import "../assets/style/giulio3.css"
+
 function NewPostForm() {
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const openModal = () => setIsModalOpen(true);
@@ -45,8 +45,7 @@ function NewPostForm() {
 						<p>Scrivi un articolo</p>{" "}
 					</a>
 				</div>
-
-				{isModalOpen && <PostModal onClose={closeModal} />}
+				<PostModal isModalOpen={isModalOpen} closeModal={closeModal} />
 			</div>
 		</div>
 	);
