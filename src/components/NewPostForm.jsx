@@ -1,11 +1,11 @@
+import { useState } from "react";
 import PostModal from "./PostModal";
 import { useSelector } from "react-redux";
 
 function NewPostForm() {
-	const modal = document.getElementById("post-modal");
-	// const showModal = () => modal.showModal();
-	const showModal = () => {};
-	const closeModal = () => modal.closeModal();
+	const [isModalOpen, setIsModalOpen] = useState(false);
+	const openModal = () => setIsModalOpen(true);
+	const closeModal = () => setIsModalOpen(false);
 
 	const {
 		name: firstName,
@@ -21,7 +21,7 @@ function NewPostForm() {
 					src={profileImage}
 					alt={`${firstName} ${lastName}`}
 				/>
-				<button className="btn-create-post" onClick={showModal}>
+				<button className="btn-create-post" onClick={openModal}>
 					Crea un Post
 				</button>
 			</header>
@@ -45,7 +45,7 @@ function NewPostForm() {
 						<p>Scrivi un articolo</p>{" "}
 					</a>
 				</div>
-				<PostModal onClose={closeModal} />
+				<PostModal isModalOpen={isModalOpen} closeModal={closeModal} />
 			</div>
 		</div>
 	);
