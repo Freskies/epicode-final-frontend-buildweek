@@ -7,6 +7,7 @@ import Profile from "./components/Profile";
 import Home from "./components/Home";
 import MainNavbar from "./components/MainNavbar";
 import Loading from "./components/Loading";
+import Jobs from "./components/Jobs.jsx";
 
 function App() {
 	// FETCH PROFILE IF NOT IN REDUX STORE
@@ -42,6 +43,7 @@ function App() {
 						<Route path="/" element={<Navigate to="/Home" />} />
 						<Route path="/Home" element={<Home />} />
 						<Route path="/Profile" element={<Profile />} />
+						<Route path="/jobs" element = {<Jobs />} />
 					</Routes>
 				</main>
 			</BrowserRouter>

@@ -98,7 +98,7 @@ function MainNavbar() {
 					</Link>
 				</li>
 				<li>
-					<Link to="/Home" className="navbar-link to-home">
+					<Link to="/Jobs" className="navbar-link to-home">
 						<i className="fa-solid fa-briefcase main-nav-icon"></i>
 						<p>Lavoro</p>
 					</Link>

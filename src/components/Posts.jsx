@@ -39,10 +39,12 @@ const Posts = () => {
     })();
   }, []);
 
-  console.log(posts)
+ // console.log(posts)
 
   const sortedPosts = () => {
-    console.log("Selected Option:", selectedOption)
+
+   // console.log("Selected Option:", selectedOption)
+   
     if (selectedOption === "più recenti per primi") {
       return [...posts].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
     } 
