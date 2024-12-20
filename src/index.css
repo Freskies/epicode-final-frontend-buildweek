@@ -381,6 +381,13 @@ a:visited {
 	position: absolute;
 	inset: 0;
 	margin: auto;
+
+	&::backdrop {
+		background-color: rgba(0, 0, 0, 0.5);
+	}
+}
+
+.dialog-wrapper {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -389,10 +396,6 @@ a:visited {
 	background-color: #fff;
 	padding: 2rem;
 	width: 60rem;
-
-	&::backdrop {
-		background-color: rgba(0, 0, 0, 0.5);
-	}
 }
 
 .new-post-header {
