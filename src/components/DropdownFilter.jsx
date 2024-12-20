@@ -1,4 +1,3 @@
-import "./dropdown.css";
 import { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 
@@ -33,14 +32,19 @@ function DropdownFilter({ sortMethod, setSortMethod }) {
 	}, []);
 
 	return (
-		<div ref={dropdownRef}>
+		<div ref={dropdownRef} className="dropdown-filter">
 			<div
 				onClick={toggleDropdown}
 				className={`dropdown-btn ${open ? "button-open" : ""}`}
 			>
 				<hr />
-				<p className="intro">Seleziona la visualizzazione del feed:</p>
-				<span className="selection">{sortMethod}</span>
+				<p className="intro">
+					<span className="intro-text">
+						Seleziona la visualizzazione del feed:
+					</span>
+					<span className="selection">{sortMethod}</span>
+				</p>
+
 				<span>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -57,14 +61,21 @@ function DropdownFilter({ sortMethod, setSortMethod }) {
 			{open && (
 				<div className={`dropdown-content ${open ? "content-open" : ""}`}>
 					<div
-						className="scelta"
+						className="filter-option"
 						data-sort-method="più recenti per primi"
 						onClick={handleOptionSelect}
 					>
 						<p>più recenti per primi</p>
 					</div>
 					<div
-						className="scelta"
+						className="filter-option"
+						data-sort-method="più recenti per ultimi"
+						onClick={handleOptionSelect}
+					>
+						<p>più recenti per ultimi</p>
+					</div>
+					<div
+						className="filter-option"
 						data-sort-method="più rilevanti per primi"
 						onClick={handleOptionSelect}
 					>

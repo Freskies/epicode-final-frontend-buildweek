@@ -1,6 +1,4 @@
 import { useSelector } from "react-redux";
-// TEMP
-import "./../assets/various-css/valerio.css";
 import cover from "../assets/pics/cover.jpg";
 import Experiences from "./Experiences";
 import "../assets/style/giulio3.css";
