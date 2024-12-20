@@ -43,7 +43,7 @@ function Modal({ onClose }) {
 	};
 
 	return (
-		<dialog className="modal-position">
+		<dialog className="post-modal" id="post-modal">
 			<div className="modal-bg">
 				<header className="new-post-header">
 					<img
