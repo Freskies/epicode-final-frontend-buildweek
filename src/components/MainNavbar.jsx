@@ -132,9 +132,9 @@ function MainNavbar() {
 			<div className="navbar-companies">
 				<ul>
 					<li>
-						<Link to="/Profile" className="navbar-link to-settings">
+						<Link to="/Home" className="navbar-link to-settings">
 							<i className="fa-solid fa-grip"></i>
-							<div className="profile-dropdown-wrapper">
+							<div className="profile-dropdown-wrapper2">
 								<p>Per le aziende </p>
 								<i className="fas fa-sort-down"></i>
 							</div>
