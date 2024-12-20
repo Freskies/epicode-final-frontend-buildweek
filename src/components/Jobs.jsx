@@ -1,51 +1,85 @@
-import { useState, useEffect } from "react";
-import { STRIVE_STUDENT_API_KEY } from "./../api_key";
-import Loading from "./Loading";
+import React, { useEffect, useState } from 'react';
+import { STRIVE_STUDENT_API_KEY } from './../api_key';
 
 const Jobs = () => {
 
-  const [job, setjob] = useState([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(false)
+    const [jobs, setJobs] = useState([])
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState(false)
 
- useEffect(() => {
-    setLoading(true);
-    setError(false);
-    (async () => {
-      try {
-        const response = await fetch(
-          `https://striveschool-api.herokuapp.com/api/posts/`,
-          {
+    //https://strive-benchmark.herokuapp.com/api/jobs?search=query // cerca per query
+    //https://strive-benchmark.herokuapp.com/api/jobs?company=Olla // annunci di una singola azienda
+    //https://strive-benchmark.herokuapp.com/api/jobs?category=writing&limit=10 // annunci di una singola categoria
+
+      /*Microsoft
+      Google
+      Apple
+      Amazon
+      Facebook
+      IBM
+      Tesla
+      Netflix
+      Salesforce*/
+
+     /*Sviluppo Software (Development)
+      Design (Design)
+      Marketing (Marketing)
+      Vendite (Sales)
+      Supporto Clienti (Customer Support)
+      Risorse Umane (Human Resources)
+      Data Science (Data Science)
+      Finanza (Finance)
+      Ingegneria (Engineering)*/
+
+    useEffect(() => {
+
+        setLoading(true)
+        setError(false)
+
+        fetch(`https://strive-benchmark.herokuapp.com/api/jobs?search=Google`, {
             method: "GET",
             headers: {
-              Authorization: STRIVE_STUDENT_API_KEY,
-              "Content-Type": "application/json",
+                Authorization: STRIVE_STUDENT_API_KEY,
+                "Content-Type": "application/json",
             },
-          },
-        );
-        if (!response.ok) throw new Error("Rejected");
-        const data = await response.json();
-        setPosts(data);
-      } catch (err) {
-        setError(true);
-        console.error("Errore nella fetch:", err);
-      } finally {
-        setLoading(false);
-      }
-    })();
-  }, []);
+        })
 
-  fetch
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Rejected")
+            }
+            return response.json()
+        })
 
-  console.log(data1)
-  console.log(data2)
-  console.log(data3)
+        .then((data) => {
+            setJobs(data.jobs); // Assumendo che `data` abbia una proprietà `jobs`
+        })
+
+        .catch((err) => {
+            setError(true)
+            console.error("Errore nella fetch:", err)
+        })
+
+        .finally(() => {
+            setLoading(false)
+        })
+
+    }, [])
 
     return (
         <div>
-
+            <section>
+                {loading && <p>Loading...</p>}
+                {error && <p>Si è verificato un errore durante il caricamento dei dati.</p>}
+                {jobs.map((job) => (
+                    <div key={job.id}>
+                        <h2>{job.title}</h2>
+                        <p>{job.company}</p>
+                    </div>
+                ))}
+            </section>
         </div>
-    )
-}
+    );
+};
 
-export default Jobs
+export default Jobs;
