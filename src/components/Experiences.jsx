@@ -43,8 +43,7 @@ const Experiences = () => {
 
 	const handleDelete = async e => {
 		e.preventDefault();
-		const experienceId = e.target.dataset.experienceId;
-		console.log(e.target.dataset);
+		const experienceId = e.target.closest("button")?.dataset?.experienceId;
 		if (!experienceId) return;
 		await deleteExperience(profileId, experienceId);
 		await getExperiences(profileId, setterExperiences);
@@ -56,17 +55,16 @@ const Experiences = () => {
 
 	return (
 		<div className="experiences">
-			<div className="titlejob">
 			<h3>Esperienze</h3>
 			<ul className="experience-list" onClick={handleDelete}>
-				{experiences.map(experience => (
-					<Experience key={experience._id} experience={experience} />
-				))}
+				{experiences
+					.sort((a, b) => new Date(b.startDate) - new Date(a.startDate))
+					.map(experience => (
+						<Experience key={experience._id} experience={experience} />
+					))}
 			</ul>
-
-				<hr/>
-			<h4 className="addsexp">Aggiungi una nuova esperienza</h4>
-			</div>
+			<hr />
+			<h3 className="addsexp">Aggiungi una nuova esperienza</h3>
 			<form className="new-experience-form" onSubmit={handleAddExperience}>
 				<input
 					type="text"

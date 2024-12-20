@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
-import cover from "../assets/pics/cover.jpg";
+import cover from "../assets/gray-background.svg";
 import Experiences from "./Experiences";
 import "../assets/style/giulio3.css";
-import OtherProfiles from "./OtherProfiles"
+import OtherProfiles from "./OtherProfiles";
 
 const Profile = () => {
 	const {
@@ -16,7 +16,7 @@ const Profile = () => {
 		<main className="profile-main">
 			<section className="my-profile">
 				<figure className="profile-card">
-					<img src={cover} alt="" className="profile-cover" />
+					<img className="profile-cover" src={cover} alt="cover grey" />
 					<img src={profileImage} alt="" className="profile-image" />
 					<figcaption className="profile-info">
 						<p className="profile-info__name">
@@ -24,14 +24,10 @@ const Profile = () => {
 						</p>
 						<p className="profile-info__email">{email}</p>
 					</figcaption>
-					<div className="exps">
-						<Experiences />
-					</div>
 				</figure>
+				<Experiences />
 			</section>
-			<aside className="other-profiles">
-				<OtherProfiles />
-			</aside>
+			<OtherProfiles />
 		</main>
 	);
 };
